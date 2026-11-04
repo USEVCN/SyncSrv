@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ExecutionProgress } from "../modules/jobs/ExecutionProgress";
 import { runProgress } from "../shared/runProgress";
 import type { Run } from "../shared/types";
@@ -8,6 +8,12 @@ const run={status:"RUNNING",phase:"TRANSFERRING",phaseBytes:100,phaseTotal:100,p
   elapsedMillis:4000,estimatedTotalMillis:16000,transferBytesPerSecond:1024,verificationBytesPerSecond:0,sampledAt:new Date().toISOString(),
 }} as Run;
 describe("whole execution progress",()=>{
+  beforeEach(()=>{
+    vi.useFakeTimers({toFake:["Date"]});
+    vi.setSystemTime(new Date("2026-11-04T00:00:00Z"));
+    run.progress!.sampledAt=new Date().toISOString();
+  });
+  afterEach(()=>vi.useRealTimers());
   it("shows actual center workers separately from the configured cap and marks stale samples",()=>{
     const progress={...run.progress!,activeFiles:3,peakActiveFiles:4,concurrencyLimit:4,sampledAt:new Date().toISOString()};
     const {rerender}=render(<ExecutionProgress run={{...run,progress}}/>);
@@ -89,6 +95,7 @@ describe("whole execution progress",()=>{
     expect(screen.queryByRole("img",{name:"校验 1.0 MiB/s"})).not.toBeInTheDocument();
   });
   it("expires a sample even when the next poll is still pending",()=>{
+    vi.useRealTimers();
     vi.useFakeTimers();
     try {
       render(<ExecutionProgress run={{...run,progress:{...run.progress!,sampledAt:new Date().toISOString()}}}/>);
