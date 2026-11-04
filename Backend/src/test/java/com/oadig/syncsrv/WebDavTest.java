@@ -196,7 +196,7 @@ class WebDavTest {
           StringBuilder xml = new StringBuilder("<d:multistatus xmlns:d=\"DAV:\">");
           for (Path p : entries) {
             boolean directory = Files.isDirectory(p);
-            String rel = root.relativize(p).toString();
+            String rel = root.relativize(p).toString().replace('\\', '/');
             String href =
                 new URI(null, null, "/" + rel + (directory && !rel.isEmpty() ? "/" : ""), null)
                     .toASCIIString();

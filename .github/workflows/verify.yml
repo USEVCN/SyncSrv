@@ -43,14 +43,13 @@ jobs:
       - name: Build safe local storage bridge
         shell: bash
         run: python scripts/build-native-io.py --host-only
-      - name: Frontend dependencies, notices, tests and build
+      - name: Frontend dependencies, notices and build
         shell: bash
         working-directory: Frontend
         run: |
           npx --yes npm@11.6.2 ci
           npm audit --audit-level=high
           npm run check:licenses
-          npm test -- --maxWorkers=2
           npm run build
       - name: Backend isolated tests
         shell: bash
@@ -59,6 +58,7 @@ jobs:
           python ../scripts/release_gate.py stamp
           mvn --batch-mode verify
       - name: Native path containment tests
+        if: ${{ !cancelled() }}
         working-directory: NativeIO
         run: go test -race ./...
       - name: Full dependency and VEX review
@@ -66,6 +66,7 @@ jobs:
         shell: bash
         run: python scripts/dependency-audit.py --output work/dependency-review
       - name: Agent tests
+        if: ${{ !cancelled() }}
         working-directory: Agent
         run: go test -race ./...
       - name: Source size and UI license gates
@@ -76,3 +77,6 @@ jobs:
           python scripts/test-ui-licenses.py
           python scripts/test-source-dependency-audit.py
           python scripts/test-release-gate.py
+      - name: Frontend tests
+        working-directory: Frontend
+        run: npm test -- --maxWorkers=2

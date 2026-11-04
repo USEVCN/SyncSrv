@@ -37,7 +37,7 @@ def fingerprint():
         ['Backend/pom.xml','Frontend/package.json','Frontend/package-lock.json','release-version.json',
         'Frontend/index.html','Frontend/vite.config.ts','Frontend/vitest.config.ts','Frontend/tsconfig.json',
         'Frontend/tsconfig.app.json','Frontend/tsconfig.node.json','LICENSE','NOTICE','THIRD_PARTY_NOTICES.md',
-        'README.md','SECURITY.md','CONTRIBUTING.md','release-policy.json','security-vex.json'])
+        'README.md','SECURITY.md','CONTRIBUTING.md','release-policy.json','security-vex.json','.gitattributes','.gitignore'])
     # Agent build artifacts are not source inputs; packaging/linux/bin is source and stays included.
     return digest_inputs([p for p in paths if not p.is_relative_to(ROOT/'Agent/bin') and not p.is_relative_to(ROOT/'Backend/src/main/resources/native-io')])
 

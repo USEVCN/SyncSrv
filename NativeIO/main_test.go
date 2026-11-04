@@ -148,3 +148,14 @@ func TestConcurrentParentReplacementCannotEscape(t *testing.T) {
 		t.Fatal("escaped mtime")
 	}
 }
+
+func TestDirectoryMetadataUsesLogicalBytes(t *testing.T) {
+	b, _ := fixture(t)
+	if _, _, e := b.execute(request{Op: "mkdirs", Path: "folder/nested"}, nil); e != nil {
+		t.Fatal(e)
+	}
+	r, _, e := b.execute(request{Op: "stat", Path: "folder"}, nil)
+	if e != nil || !r.Item.Directory || r.Item.Size != 0 {
+		t.Fatal(r, e)
+	}
+}

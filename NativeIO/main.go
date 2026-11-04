@@ -126,7 +126,11 @@ func errorCode(err error) string {
 	}
 }
 func info(a os.FileInfo) item {
-	return item{a.Name(), a.IsDir(), a.Size(), a.ModTime().UnixMilli(), a.Mode()&os.ModeSymlink != 0}
+	size := a.Size()
+	if a.IsDir() {
+		size = 0
+	}
+	return item{a.Name(), a.IsDir(), size, a.ModTime().UnixMilli(), a.Mode()&os.ModeSymlink != 0}
 }
 func (b *bridge) valid(p string) error {
 	if p == "" || p == "." {

@@ -31,11 +31,20 @@ class UpdateServerSourceTest {
   Map<String,String> save(UpdateSourceConfiguration c,String url) throws Exception {return c.save(url,c.configuration().get("revision"),"test-admin");}
 
   @Test void storesInServiceStateAndPreservesReadOnlyDeploymentPolicyAndChannel() throws Exception {
-    Files.setPosixFilePermissions(policy,PosixFilePermissions.fromString("r--------"));byte[] before=Files.readAllBytes(policy);
+    boolean posix=FileSystems.getDefault().supportedFileAttributeViews().contains("posix");
+    if(posix)Files.setPosixFilePermissions(policy,PosixFilePermissions.fromString("r--------"));
+    else Files.setAttribute(policy,"dos:readonly",true);
+    byte[] before=Files.readAllBytes(policy);
     var service=service(config());var saved=service.saveServer("https://new.example:18761",service.sourceConfiguration().get("revision"),"test-admin");
     assertEquals("https://new.example:18761",saved.get("serverUrl"));assertEquals("beta",saved.get("channel"));
-    assertArrayEquals(before,Files.readAllBytes(policy));assertEquals(PosixFilePermissions.fromString("r--------"),Files.getPosixFilePermissions(policy));
-    assertEquals(PosixFilePermissions.fromString("rw-------"),Files.getPosixFilePermissions(state));
+    assertArrayEquals(before,Files.readAllBytes(policy));
+    if(posix){
+      assertEquals(PosixFilePermissions.fromString("r--------"),Files.getPosixFilePermissions(policy));
+      assertEquals(PosixFilePermissions.fromString("rw-------"),Files.getPosixFilePermissions(state));
+    }else{
+      assertEquals(true,Files.getAttribute(policy,"dos:readonly"));
+      Files.setAttribute(policy,"dos:readonly",false);
+    }
     assertEquals("COMMITTED",Json.MAPPER.readTree(Files.readAllBytes(state)).path("status").asText());
     assertEquals(2,events.size());assertTrue(events.get(0).contains("source_change_requested"));assertTrue(events.get(1).contains("source_changed"));
     assertEquals(saved,new UpdateSourceConfiguration(env,data,(a,b,c)->{}).configuration());

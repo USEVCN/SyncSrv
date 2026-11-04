@@ -318,7 +318,7 @@ public final class ConfigurationService {
   }
 
   public static String location(Endpoint e) throws Exception {
-    if (e.protocol.equals("LOCAL")) return "LOCAL|" + StoragePaths.canonical(Path.of(e.root));
+    if (e.protocol.equals("LOCAL")) return "LOCAL|" + StoragePaths.canonical(Path.of(e.root)).toString().replace('\\', '/');
     String root = e.root.replaceAll("^/+|/+$", "");
     if (e.protocol.equals("WEBDAV")) {
       URI u = URI.create(e.host);

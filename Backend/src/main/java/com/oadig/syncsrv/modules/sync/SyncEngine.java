@@ -139,7 +139,7 @@ public final class SyncEngine {
         Node check = second.get(n.path());
         if (n.directory() != check.directory()
             || n.size() != check.size()
-            || n.modified() != check.modified()) throw new IOException("扫描期间文件变化: " + n.path());
+            || (!n.directory() && n.modified() != check.modified())) throw new IOException("扫描期间文件变化: " + n.path());
       }
       Map<String, Node> source = new TreeMap<>(current);
       if (full) source.clear();

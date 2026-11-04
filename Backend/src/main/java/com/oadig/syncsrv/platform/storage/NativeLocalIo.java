@@ -17,6 +17,8 @@ final class NativeLocalIo implements AutoCloseable {
   private final InputStream input;
   private final OutputStream output;
   private volatile boolean closed;
+  private final java.util.concurrent.atomic.AtomicBoolean closing = new java.util.concurrent.atomic.AtomicBoolean();
+  private final java.util.concurrent.CountDownLatch stopped = new java.util.concurrent.CountDownLatch(1);
   record Reply(JsonNode json, byte[] body) {}
   NativeLocalIo(Path root) throws Exception {
     process = new ProcessBuilder(binary().toString(), root.toString()).redirectError(ProcessBuilder.Redirect.DISCARD).start();
@@ -78,11 +80,24 @@ final class NativeLocalIo implements AutoCloseable {
     return new Reply(json, data);
   }
   @Override public void close() {
-    if (closed) return; closed = true;
-    process.destroyForcibly();
-    try { output.close(); } catch (Exception ignored) {}
-    try { if (!process.waitFor(200, TimeUnit.MILLISECONDS)) process.destroyForcibly(); }
-    catch (InterruptedException e) { Thread.currentThread().interrupt(); process.destroyForcibly(); }
-    try { input.close(); } catch (Exception ignored) {}
+    boolean owner = closing.compareAndSet(false, true), interrupted = false;
+    long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
+    try {
+      if (owner) { closed = true; process.destroyForcibly(); }
+      for (;;) {
+        long left = deadline - System.nanoTime();
+        if (left <= 0) throw new IllegalStateException("本地存储组件未能及时退出");
+        try {
+          if (owner ? process.waitFor(left, TimeUnit.NANOSECONDS) : stopped.await(left, TimeUnit.NANOSECONDS)) break;
+        } catch (InterruptedException e) { interrupted = true; }
+      }
+    } finally {
+      if (owner) {
+        try { output.close(); } catch (Exception ignored) {}
+        try { input.close(); } catch (Exception ignored) {}
+        stopped.countDown();
+      }
+      if (interrupted) Thread.currentThread().interrupt();
+    }
   }
 }
