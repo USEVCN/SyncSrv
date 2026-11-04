@@ -1,0 +1,94 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+}
+
+html {
+    color-scheme: dark;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color:
+        var(--ss-color-border, #354360)
+        var(--ss-color-bg-container, #101729);
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track-piece {
+    background: var(--ss-color-bg-container, #101729);
+}
+
+*::-webkit-scrollbar-thumb {
+    min-width: 40px;
+    min-height: 40px;
+    border: 2px solid var(--ss-color-bg-container, #101729);
+    border-radius: 999px;
+    background: var(--ss-color-border, #354360);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--ss-color-primary, #2F6B9A);
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background: var(--ss-color-primary-active, #25577F);
+}
+
+*::-webkit-scrollbar-corner {
+    background: var(--ss-color-bg-container, #101729);
+}
+
+*::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.ant-table-sticky-scroll {
+    background: var(--ss-color-bg-container, #101729) !important;
+}
+
+.ant-table-sticky-scroll-bar {
+    border-radius: 999px !important;
+    background: var(--ss-color-border, #354360) !important;
+}
+
+.ant-table-sticky-scroll-bar:hover {
+    background: var(--ss-color-primary, #2F6B9A) !important;
+}
+
+/*
+ * Ant Design Modal 的容器默认无边框。深色页面中仅依靠阴影会让弹窗边缘
+ * 与画布混在一起，因此保留单层细线轮廓与阴影，避免外圈叠加描边。
+ * 该选择器同时覆盖普通 Modal、App.useApp() 创建的 confirm 以及浏览弹窗。
+ */
+.ant-modal-root .ant-modal-wrap .ant-modal .ant-modal-container {
+    border: var(--ss-line-width, 0.5px) solid color-mix(
+        in srgb,
+        var(--ss-color-border, #27334f) 78%,
+        var(--ss-color-text, #eef2ff) 22%
+    );
+    background-clip: padding-box;
+    box-shadow: 0 24px 72px rgb(0 0 0 / 68%);
+}
+
+body {
+    overflow: hidden;
+}
+

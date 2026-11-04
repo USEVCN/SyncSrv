@@ -1,0 +1,53 @@
+/* LE settings structure; SyncSrv keeps its palette, glass and business panels. */
+.system-settings { container: system-settings / inline-size; min-width: 0; font-size: var(--ui-font-body, 14px); --settings-gap: 16px; }
+.system-settings-drawer .ant-drawer-body { padding: 0 24px 24px; }
+.system-settings .ant-tabs { min-width: 0; }
+.system-settings-tabs > .ant-tabs-nav { position: sticky; top: 0; z-index: 3; margin-bottom: 20px; padding-top: 12px; background: var(--ss-color-bg-container, #101729); }
+.system-settings-tabs > .ant-tabs-nav .ant-tabs-tab { padding-block: 14px; }
+.system-settings-tabs > .ant-tabs-nav .ant-tabs-tab-btn { font-size: var(--ui-font-body, 14px); }
+.system-settings-tabs > .ant-tabs-nav .ant-tabs-tab-active .ant-tabs-tab-btn { font-weight: 600; }
+.system-settings-tabs > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab { margin-left: 24px; }
+.system-settings .ant-tabs-content-holder, .system-settings .ant-tabs-tabpane { min-width: 0; }
+.settings-stack { display: flex; flex-direction: column; gap: var(--settings-gap, 16px); min-width: 0; }
+.system-settings .ant-card { min-width: 0; border-radius: 12px; }
+.system-settings .ant-card .ant-card-head { min-height: 44px; padding-inline: 18px; }
+.system-settings .ant-card .ant-card-head-title { white-space: normal; font-size: var(--ui-font-body, 14px); font-weight: 600; }
+.system-settings .ant-card-head-wrapper { flex-wrap: wrap; gap: 8px 12px; padding-block: 10px; }
+.system-settings .ant-card-extra { max-width: 100%; }
+.system-settings .ant-card .ant-card-body { padding: 18px; }
+.system-settings .ant-form-item { margin-bottom: 18px; min-width: 0; }
+.system-settings .ant-form-item .ant-form-item-label { padding-bottom: 7px; }
+.system-settings .ant-form-item .ant-form-item-label > label { font-size: var(--ui-font-body, 14px); }
+.system-settings .ant-input-number { width: 100%; }
+.settings-panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.settings-feedback { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.settings-form-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+.settings-form-columns > * { min-width: 0; }
+.settings-actions { display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 8px; padding-top: 16px; margin-top: 18px; border-top: .5px solid var(--ss-color-border-secondary, #ffffff0b); }
+.settings-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; margin: 0; }
+.settings-facts > div { display: grid; grid-template-columns: minmax(70px, auto) minmax(0, 1fr); align-items: baseline; gap: 12px; min-width: 0; }
+.settings-facts dt { color: var(--ss-color-text-secondary); font-size: var(--ui-font-list, 13px); }
+.settings-facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.settings-type-levels { margin-block: 0; }
+.settings-type-level { display: grid; grid-template-columns: 22px minmax(0, 1fr) 92px; gap: 10px; align-items: center; padding-block: 12px; border-bottom: .5px solid #ffffff0b; }
+.settings-type-level:first-child { padding-top: 0; }
+.settings-type-level:last-child { border-bottom: 0; padding-bottom: 0; }
+.settings-type-index { color: var(--ss-color-text-tertiary); font-size: var(--ui-font-caption, 11px); }
+.settings-type-level label { display: block; font-weight: 500; }
+.settings-type-level .ant-typography { display: block; margin-top: 4px; font-size: var(--ui-font-compact, 12px); }
+.settings-type-preview { margin-block: 18px; }
+.settings-type-preview .ant-card-body > div { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; padding-block: 6px; overflow-wrap: anywhere; }
+.settings-type-preview .ant-card-body > div > span:first-child { color: var(--ss-color-text-secondary); font-size: var(--ui-font-compact, 12px); }
+.settings-tls .settings-fingerprint { font-family: ui-monospace, monospace; font-size: var(--ui-font-compact, 12px); word-break: break-all; }
+.settings-tls .ant-descriptions { margin-block: 16px; }
+.system-settings .ant-descriptions-item-content { overflow-wrap: anywhere; min-width: 0; }
+.system-settings .settings-stack > .space-top { margin-top: 0; }
+.system-settings-drawer .ant-drawer-resizable-dragger { cursor: col-resize; }
+@container system-settings (max-width: 520px) {
+  .settings-form-columns, .settings-facts { grid-template-columns: minmax(0, 1fr); }
+  .settings-facts > div { grid-template-columns: 112px minmax(0, 1fr); }
+  .system-settings .ant-card .ant-card-body { padding: 14px; }
+  .system-settings .ant-card .ant-card-head { padding-inline: 14px; }
+  .settings-actions > .ant-btn { white-space: normal; height: auto; min-height: 32px; }
+}
+@media (max-width: 600px) { .system-settings-drawer .ant-drawer-body { padding-inline: 14px; } }

@@ -1,0 +1,184 @@
+/* LE desktop ambient glass, revision 20261022-gloss-7-selected-balanced-edges.
+   Decorative surfaces only: preserve geometry, controls, text and portal dialogs. */
+.app-shell--ambient.ant-layout {
+    --app-ambient-blue: var(--ss-color-primary, #2F6B9A);
+    --app-ambient-glint: color-mix(in srgb, var(--app-ambient-blue) 48%, var(--ss-color-text, #eef2ff));
+    --app-ambient-canvas: var(--ss-color-bg-layout, #080c18);
+    --app-ambient-surface: var(--ss-color-bg-container, #101729);
+    background:
+        radial-gradient(ellipse 82% 52% at 8% -5%, color-mix(in srgb, var(--app-ambient-blue) 24%, transparent), transparent 74%),
+        radial-gradient(ellipse 90% 76% at 86% 93%, color-mix(in srgb, var(--app-ambient-blue) 38%, transparent), transparent 77%),
+        radial-gradient(ellipse 70% 48% at 87% 29%, color-mix(in srgb, var(--app-ambient-blue) 10%, transparent), transparent 76%),
+        linear-gradient(180deg, var(--app-ambient-canvas), var(--app-ambient-canvas) 48%, color-mix(in srgb, var(--app-ambient-blue) 10%, var(--app-ambient-canvas)));
+}
+.app-shell--ambient .app-shell-workspace.ant-layout,
+.app-shell--ambient .app-main-content,
+.app-shell--ambient .app-main-content--glass {
+    background: transparent;
+}
+.app-shell--ambient .app-shell-header.ant-layout-header {
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--app-ambient-glint) 5.5%, transparent), transparent 56%),
+        linear-gradient(110deg, color-mix(in srgb, var(--app-ambient-blue) 18%, transparent), color-mix(in srgb, var(--app-ambient-blue) 3%, transparent) 78%, transparent);
+    border-bottom-color: color-mix(in srgb, var(--app-ambient-blue) 26%, transparent) !important;
+    border-image-source: linear-gradient(95deg, color-mix(in srgb, var(--app-ambient-blue) 40%, transparent), color-mix(in srgb, var(--app-ambient-blue) 12%, transparent) 28%, transparent 62%, color-mix(in srgb, var(--app-ambient-blue) 24%, transparent));
+    border-image-slice: 1;
+    box-shadow: inset 0 .5px color-mix(in srgb, var(--app-ambient-blue) 14%, transparent), inset 0 -.5px color-mix(in srgb, var(--app-ambient-blue) 12%, transparent);
+}
+.app-shell--ambient .app-sidebar.ant-layout-sider {
+    background:
+        linear-gradient(165deg, color-mix(in srgb, var(--app-ambient-glint) 3%, transparent), transparent 30%),
+        radial-gradient(ellipse 155% 46% at 0 0, color-mix(in srgb, var(--app-ambient-blue) 28%, transparent), transparent 78%),
+        radial-gradient(ellipse 170% 39% at 40% 105%, color-mix(in srgb, var(--app-ambient-blue) 20%, transparent), transparent 82%),
+        linear-gradient(180deg, color-mix(in srgb, var(--app-ambient-surface) 22%, transparent), color-mix(in srgb, var(--app-ambient-blue) 8%, transparent) 38%, color-mix(in srgb, var(--app-ambient-surface) 18%, transparent));
+    border-right-color: color-mix(in srgb, var(--app-ambient-blue) 30%, transparent);
+    border-image-source: linear-gradient(180deg, color-mix(in srgb, var(--app-ambient-blue) 40%, transparent), color-mix(in srgb, var(--app-ambient-blue) 12%, transparent) 44%, color-mix(in srgb, var(--app-ambient-blue) 30%, transparent));
+    border-image-slice: 1;
+    box-shadow: inset -.5px 0 color-mix(in srgb, var(--app-ambient-blue) 12%, transparent);
+}
+.app-shell--ambient .app-sidebar .app-sidebar-menu,
+.app-shell--ambient .app-sidebar .ant-menu-sub { background: transparent; }
+.app-shell--ambient .app-sidebar .app-sidebar-menu .ant-menu-item,
+.app-shell--ambient .app-sidebar .app-sidebar-collapse {
+    border-color: transparent;
+}
+/* Only the selected item has a glass edge. Clear unselected edges even when
+   an older bundled stylesheet remains; keep the selected marker and focus. */
+.app-shell--ambient .app-sidebar .app-sidebar-menu.ant-menu-inline .ant-menu-item:not(.ant-menu-item-selected)::after {
+    content: none;
+    opacity: 0;
+    pointer-events: none;
+}
+.app-shell--ambient .app-sidebar .app-sidebar-menu.ant-menu-inline .ant-menu-item-selected::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: inherit;
+    padding: var(--ss-line-width, .5px);
+    background: linear-gradient(140deg, color-mix(in srgb, var(--app-ambient-blue) 52%, transparent), color-mix(in srgb, var(--app-ambient-blue) 14%, transparent) 24%, transparent 43%, transparent 78%, color-mix(in srgb, var(--app-ambient-blue) 30%, transparent));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 1;
+    transform: none;
+    pointer-events: none;
+}
+.app-shell--ambient .app-sidebar .app-sidebar-menu .ant-menu-item-selected {
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--app-ambient-glint) 8%, transparent), transparent 62%),
+        linear-gradient(112deg, color-mix(in srgb, var(--app-ambient-blue) 46%, transparent), color-mix(in srgb, var(--app-ambient-blue) 30%, transparent));
+    border-color: color-mix(in srgb, var(--app-ambient-blue) 56%, transparent);
+    box-shadow: inset 0 .5px color-mix(in srgb, var(--app-ambient-blue) 12%, transparent);
+}
+.app-shell--ambient .app-sidebar .app-sidebar-menu .ant-menu-item:not(.ant-menu-item-selected):hover {
+    background: color-mix(in srgb, var(--app-ambient-glint) 8%, transparent);
+    border-color: transparent;
+}
+.app-shell--ambient .app-sidebar .app-sidebar-footer { border-top-color: color-mix(in srgb, var(--app-ambient-glint) 9%, transparent); }
+.app-shell--ambient .app-main-content--glass {
+    --page-glass-border: color-mix(in srgb, var(--app-ambient-blue) 34%, transparent);
+    --page-glass-fill: linear-gradient(155deg, color-mix(in srgb, var(--app-ambient-glint) 4%, transparent), transparent 42%, color-mix(in srgb, var(--app-ambient-blue) 3%, transparent)), color-mix(in srgb, var(--app-ambient-surface) 22%, transparent);
+    --page-glass-shadow: 0 10px 28px #00050d1a, 0 0 8px color-mix(in srgb, var(--app-ambient-blue) 2.5%, transparent);
+}
+.app-shell--ambient .app-main-content--glass .list-page-header {
+    background: linear-gradient(155deg, color-mix(in srgb, var(--app-ambient-glint) 5.5%, transparent), transparent 44%, color-mix(in srgb, var(--app-ambient-blue) 4%, transparent)), color-mix(in srgb, var(--app-ambient-surface) 20%, transparent);
+    border-color: color-mix(in srgb, var(--app-ambient-blue) 34%, transparent);
+    box-shadow: 0 8px 28px #00050d14, 0 0 8px color-mix(in srgb, var(--app-ambient-blue) 2.5%, transparent), inset 0 .5px color-mix(in srgb, var(--app-ambient-blue) 8%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(108%);
+    backdrop-filter: blur(14px) saturate(108%);
+}
+.app-shell--ambient .app-main-content--glass .ant-card,
+.app-shell--ambient .app-main-content--glass .ant-card.list-table-card {
+    background: var(--page-glass-fill);
+    border-color: var(--page-glass-border);
+    box-shadow: var(--page-glass-shadow);
+    -webkit-backdrop-filter: blur(14px) saturate(108%);
+    backdrop-filter: blur(14px) saturate(108%);
+}
+.app-shell--ambient .app-main-content--glass .ant-card .ant-card {
+    background: color-mix(in srgb, var(--app-ambient-surface) 15%, transparent);
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+/* A faint interrupted reflection, not a uniformly lit outline. */
+.app-shell--ambient .app-main-content--glass .list-page-header,
+.app-shell--ambient .app-main-content--glass .list-table-card { position: relative; }
+.app-shell--ambient .app-main-content--glass .list-page-header::after,
+.app-shell--ambient .app-main-content--glass .list-table-card::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: var(--ss-line-width, .5px);
+    background: linear-gradient(140deg, color-mix(in srgb, var(--app-ambient-blue) 52%, transparent), color-mix(in srgb, var(--app-ambient-blue) 16%, transparent) 22%, transparent 43%, transparent 76%, color-mix(in srgb, var(--app-ambient-blue) 32%, transparent));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+.app-shell--ambient .app-main-content--glass .ant-table-thead > tr > th,
+.app-shell--ambient .app-main-content--glass .ant-table-thead > tr > td {
+    background: color-mix(in srgb, var(--app-ambient-glint) 3%, transparent);
+    border-bottom-color: color-mix(in srgb, var(--app-ambient-glint) 11%, transparent);
+}
+.app-shell--ambient .app-main-content--glass .ant-table-tbody > tr > td { border-bottom-color: color-mix(in srgb, var(--app-ambient-glint) 5%, transparent); }
+/* Preserve opaque fixed columns: scrolling text must never show through. */
+.app-shell--ambient .app-main-content--glass .ant-table-thead > tr > .ant-table-cell-fix { background: var(--ss-color-bg-elevated, #151e33); }
+.app-shell--ambient .app-main-content--glass .ant-table-tbody > tr > .ant-table-cell-fix { background: var(--app-ambient-surface); }
+.app-shell--ambient .app-main-content--glass .ant-table-tbody > tr > .ant-table-cell-fix.ant-table-cell-row-hover { background: color-mix(in srgb, var(--app-ambient-blue) 12%, var(--app-ambient-surface)); }
+.app-shell--ambient .app-main-content--glass .ant-table-tbody > tr.ant-table-row-selected > .ant-table-cell-fix { background: var(--ss-control-item-bg-active, #151e33); }
+.app-shell--ambient .dashboard-aurora {
+    background: radial-gradient(ellipse at 9% 0, color-mix(in srgb, var(--app-ambient-blue) 12.5%, transparent), transparent 59%), radial-gradient(ellipse at 87% 72%, color-mix(in srgb, var(--app-ambient-blue) 13%, transparent), transparent 68%);
+}
+.app-shell--ambient .dashboard-orb { opacity: .22; }
+.app-shell--ambient .dashboard-hero,
+.app-shell--ambient .dashboard .dashboard-metric,
+.app-shell--ambient .dashboard .dashboard-panel {
+    background: linear-gradient(155deg, color-mix(in srgb, var(--app-ambient-glint) 4%, transparent), transparent 43%, color-mix(in srgb, var(--app-ambient-blue) 3%, transparent)), color-mix(in srgb, var(--app-ambient-surface) 26%, transparent);
+    border-color: color-mix(in srgb, var(--app-ambient-blue) 34%, transparent);
+    box-shadow: 0 10px 28px #00050d18, 0 0 8px color-mix(in srgb, var(--app-ambient-blue) 2.5%, transparent), inset 0 .5px color-mix(in srgb, var(--app-ambient-blue) 6%, transparent);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .app-shell--ambient .app-main-content--glass .list-page-header,
+    .app-shell--ambient .app-main-content--glass .ant-card { background: color-mix(in srgb, var(--app-ambient-surface) 92%, transparent); }
+}
+@media print {
+    .app-shell--ambient.ant-layout,
+    .app-shell--ambient .app-sidebar.ant-layout-sider,
+    .app-shell--ambient .app-shell-header.ant-layout-header { background-image: none; box-shadow: none; }
+    .app-shell--ambient .app-main-content--glass .list-page-header,
+    .app-shell--ambient .app-main-content--glass .ant-card {
+        background-image: none;
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+    .app-shell--ambient .app-main-content--glass .list-page-header::after,
+    .app-shell--ambient .app-main-content--glass .list-table-card::after { display: none; }
+}
+
+/* SyncSrv-specific business panels use the same LE ambient material. */
+.app-shell--ambient .audit-banner,
+.app-shell--ambient .protocol-strip {
+    background: var(--page-glass-fill);
+    border: var(--ss-line-width, .5px) solid var(--page-glass-border);
+    box-shadow: var(--page-glass-shadow);
+}
+.app-shell--ambient .pipeline-node,
+.app-shell--ambient .job-endpoint {
+    background: color-mix(in srgb, var(--app-ambient-surface) 15%, transparent);
+    border-color: color-mix(in srgb, var(--app-ambient-blue) 20%, transparent);
+}
+.app-shell--ambient .pipeline-node:hover {
+    background: color-mix(in srgb, var(--app-ambient-blue) 12%, transparent);
+    border-color: color-mix(in srgb, var(--app-ambient-blue) 48%, transparent);
+}
+.app-shell--ambient .metric-card::before { opacity: .22; }

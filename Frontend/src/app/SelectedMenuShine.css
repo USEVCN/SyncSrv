@@ -1,0 +1,80 @@
+/* RH-style selection effects, using LE colors only. The existing menu theme
+   continues to own the fill, label, icon, left marker, layout and hit target. */
+@property --ss-menu-shine-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 32deg;
+}
+
+@supports (mask-composite: exclude) or (-webkit-mask-composite: xor) {
+    html .app-shell--ambient .app-sidebar .app-sidebar-menu.ant-menu .ant-menu-item-selected::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 1px;
+        border: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        transform: none;
+        opacity: .86;
+        background: conic-gradient(from var(--ss-menu-shine-angle),
+            transparent 0deg 210deg,
+            color-mix(in srgb, var(--app-ambient-blue) 29%, transparent) 242deg,
+            color-mix(in srgb, var(--app-ambient-glint) 74%, transparent) 260deg,
+            var(--ss-color-text, #eef2ff) 274deg,
+            color-mix(in srgb, var(--app-ambient-glint) 70%, transparent) 284deg,
+            color-mix(in srgb, var(--app-ambient-blue) 50%, transparent) 300deg,
+            transparent 326deg 360deg);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        filter: drop-shadow(0 0 2px color-mix(in srgb, var(--app-ambient-blue) 29%, transparent));
+        animation: ss-menu-edge-orbit 5.8s linear infinite;
+        transition: none;
+    }
+}
+
+/* The low-opacity texture sits behind the label and never intercepts input.
+   Collapsed menus hide the label as before; their selected edge stays visible. */
+html .app-shell--ambient .app-sidebar .app-sidebar-menu .ant-menu-item-selected .ant-menu-title-content {
+    position: relative;
+    isolation: isolate;
+}
+html .app-shell--ambient .app-sidebar .app-sidebar-menu .ant-menu-item-selected .ant-menu-title-content::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(circle, var(--app-ambient-glint) .55px, transparent .8px);
+    background-size: 5px 5px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 12%, #000 75%, transparent);
+    mask-image: linear-gradient(90deg, transparent 12%, #000 75%, transparent);
+    opacity: .16;
+    animation: ss-menu-speckle-drift 5.8s ease-in-out infinite;
+}
+
+@keyframes ss-menu-edge-orbit {
+    to { --ss-menu-shine-angle: 392deg; }
+}
+@keyframes ss-menu-speckle-drift {
+    0%, 100% { transform: translateX(-25%); opacity: .04; }
+    50% { transform: translateX(10%); opacity: .2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html .app-shell--ambient .app-sidebar .app-sidebar-menu.ant-menu .ant-menu-item-selected::after,
+    html .app-shell--ambient .app-sidebar .app-sidebar-menu .ant-menu-item-selected .ant-menu-title-content::after {
+        animation: none;
+    }
+}
+@media (forced-colors: active), print {
+    html .app-shell--ambient .app-sidebar .app-sidebar-menu.ant-menu .ant-menu-item-selected::after,
+    html .app-shell--ambient .app-sidebar .app-sidebar-menu .ant-menu-item-selected .ant-menu-title-content::after {
+        display: none;
+    }
+}

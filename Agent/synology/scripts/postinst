@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+umask 077
+package_dir=${SYNOPKG_PKGDEST:-/var/packages/SyncSrvAgent/target}
+var_dir=${SYNOPKG_PKGVAR:-/var/packages/SyncSrvAgent/var}
+mkdir -p "$var_dir/state"
+data_dir=$(CDPATH= cd -- "$var_dir/state" && pwd -P)
+chmod 700 "$data_dir"
+# DSM preserves var across upgrades. Reuse the device identity and pending queues.
+[ ! -f "$data_dir/identity.json" ] || exit 0
+[ -n "${syncsrv_server:-}" ] && [ -n "${syncsrv_token:-}" ] || { printf '%s\n' 'Please enter the backup server and one-time pairing token in the installation wizard.' >&2; exit 1; }
+token_file=$(mktemp "$data_dir/pairing.XXXXXX")
+trap 'rm -f "$token_file"' EXIT HUP INT TERM
+printf '%s\n' "$syncsrv_token" > "$token_file"
+unset syncsrv_token
+allow_http=
+[ "${syncsrv_allow_http:-false}" != true ] || allow_http=--allow-http
+"$package_dir/syncsrv-agent" enroll --server "$syncsrv_server" --name "${syncsrv_name:-SyncSrv NAS}" --data-dir "$data_dir" --token-file "$token_file" $allow_http

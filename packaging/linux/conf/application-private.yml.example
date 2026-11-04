@@ -1,0 +1,6 @@
+syncsrv:
+  production: true
+  audit-anchor:
+    url: https://independent-audit.example.invalid/head
+    public-key: REPLACE_WITH_BASE64_X509_ED25519_RECEIPT_KEY
+  alert-webhook: ""

@@ -1,0 +1,42 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #f4f4fc;
+  font-size: 23px;
+  font-weight: 650;
+  letter-spacing: -0.7px;
+  white-space: nowrap;
+}
+.brand small {
+  display: block;
+  color: #6f7b94;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin-top: 3px;
+}
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.app-shell { height: 100dvh; min-height: 100vh; background: #080c18; }
+.main-layout { min-width: 0; }
+.topbar { height: 64px; padding-inline: 24px; border-bottom: var(--ss-line-width, .5px) solid #202b44; }
+.topbar-content { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.page-content { min-width: 0; height: calc(100dvh - 64px); overflow: auto; padding: 24px; background-color: #080c18; }
+.page-heading { margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.list-page-heading { min-width: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.list-page-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.heading-actions .ant-space { flex-wrap: wrap; }
+.app-sidebar-brand { height: 64px; padding-inline: 22px; display: flex; align-items: center; gap: 10px; overflow: hidden; }
+.app-sidebar-brand > img { width: 32px; height: 32px; flex: 0 0 32px; }
+.app-sidebar.ant-layout-sider-collapsed .app-sidebar-brand { padding-inline: 18px; }
+.account-menu-popup { min-width: 208px; padding: 4px; border: var(--ss-line-width, .5px) solid #202b44; border-radius: 14px; background: #151e33; box-shadow: 0 18px 48px #0006; }
+.account-menu-popup .ant-dropdown-menu { padding: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.account-service-state { display: flex; align-items: center; gap: 8px; }
+.live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #58cbaa; flex-shrink: 0; }
+.live-dot.offline { background: #ec7990; }

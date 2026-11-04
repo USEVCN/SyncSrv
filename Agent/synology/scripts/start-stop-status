@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+package_dir=${SYNOPKG_PKGDEST:-/var/packages/SyncSrvAgent/target}
+var_dir=${SYNOPKG_PKGVAR:-/var/packages/SyncSrvAgent/var}
+data_dir=$(CDPATH= cd -- "$var_dir/state" && pwd -P)
+case "${1:-}" in
+ start|stop|status)
+  exec "$package_dir/syncsrv-agent" portable-control --package-service --action "$1" --install-dir "$package_dir" --data-dir "$data_dir" ;;
+ prestart) [ -s "$data_dir/identity.json" ] ;;
+ prestop) exit 0 ;;
+ *) exit 1 ;;
+esac

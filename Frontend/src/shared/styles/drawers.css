@@ -1,0 +1,59 @@
+.syncsrv-drawer .ant-drawer-resizable-dragger { width: 12px; cursor: col-resize; }
+.syncsrv-drawer .ant-drawer-resizable-dragger::after {
+  content: "";
+  position: absolute;
+  top: 42%;
+  left: 4px;
+  width: 4px;
+  height: 76px;
+  border-radius: 4px;
+  background: #718ead;
+  box-shadow: 0 0 0 2px #101729;
+  transition: background .15s;
+}
+.syncsrv-drawer .ant-drawer-resizable-dragger:hover::after { background: #89cdff; }
+
+.ant-form-item-tooltip, .ant-form-item-tooltip .anticon { cursor: pointer !important; }
+
+/* Execution summary, related files and actions are separate vertical sections. */
+.activity-detail-content { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.activity-detail-content > * { min-width: 0; }
+.activity-detail-content .ant-descriptions-item-label { width: 160px; white-space: nowrap; }
+.activity-detail-section-heading { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.activity-detail-section-heading h3 { line-height: 1.6; }
+.activity-detail-changes .ant-table-cell { vertical-align: top; overflow-wrap: anywhere; white-space: normal; }
+.activity-change-path {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  line-height: 1.65;
+  cursor: pointer;
+}
+.activity-change-time { font-size: 12px; line-height: 1.65; }
+.activity-detail-changes .ant-table-pagination { margin-bottom: 0; flex-wrap: wrap; row-gap: 8px; }
+.activity-detail-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: var(--ss-line-width, .5px) solid #202b44;
+}
+.activity-detail-errors { margin: 0; padding-left: 18px; }
+.activity-detail-errors li + li { margin-top: 8px; }
+
+/* Drawer section headings follow the LE section level. */
+.syncsrv-drawer h3 { font-size: var(--ui-font-section, 16px); font-weight: 600; line-height: 1.5; }
+.syncsrv-drawer .ant-drawer-title { overflow-wrap: anywhere; }
+.syncsrv-drawer .ant-drawer-extra { flex-shrink: 0; }
+@media (max-width: 680px) {
+  .syncsrv-drawer .ant-drawer-header { flex-wrap: wrap; gap: 12px; }
+  .syncsrv-drawer .section-heading { flex-wrap: wrap; }
+  .directory-date { flex-basis: 128px; }
+}
+
+.syncsrv-drawer .ant-drawer-resizable-dragger:focus-visible { outline: 2px solid var(--ss-color-primary, #2F6B9A); outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) { .syncsrv-drawer .ant-drawer-resizable-dragger::after { transition: none; } }

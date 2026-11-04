@@ -1,0 +1,1068 @@
+{
+  "schema": 1,
+  "reviewDate": "2026-11-04",
+  "reviewPolicy": "licenses/ui-reviewed.json",
+  "npmPackages": [
+    {
+      "name": "@ant-design/colors",
+      "version": "8.0.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@ant-design/colors"
+      ],
+      "evidence": "installed package: node_modules/@ant-design/colors",
+      "licenseSha256": "5d367fb0a07340571542eb4ee8eb1add62d37b71bad6786a57c2e9a86bf76c70"
+    },
+    {
+      "name": "@ant-design/cssinjs",
+      "version": "2.1.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@ant-design/cssinjs"
+      ],
+      "evidence": "installed package: node_modules/@ant-design/cssinjs",
+      "licenseSha256": "2481b61123d4f8be84e11847d4bc9684f2aa073d1d2a3275e36fdb7f1cff019a"
+    },
+    {
+      "name": "@ant-design/cssinjs-utils",
+      "version": "2.1.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@ant-design/cssinjs-utils"
+      ],
+      "evidence": "installed package: node_modules/@ant-design/cssinjs-utils",
+      "licenseSha256": "4973f756e858531bdae451f98054278dabd2ef50fc4d3dbccc084ee35964ad3d"
+    },
+    {
+      "name": "@ant-design/fast-color",
+      "version": "3.0.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@ant-design/fast-color"
+      ],
+      "evidence": "installed package: node_modules/@ant-design/fast-color",
+      "licenseSha256": "4973f756e858531bdae451f98054278dabd2ef50fc4d3dbccc084ee35964ad3d"
+    },
+    {
+      "name": "@ant-design/icons",
+      "version": "6.3.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@ant-design/icons"
+      ],
+      "evidence": "installed package: node_modules/@ant-design/icons",
+      "licenseSha256": "5d367fb0a07340571542eb4ee8eb1add62d37b71bad6786a57c2e9a86bf76c70"
+    },
+    {
+      "name": "@ant-design/icons-svg",
+      "version": "4.6.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@ant-design/icons-svg"
+      ],
+      "evidence": "https://raw.githubusercontent.com/ant-design/ant-design-icons/7f2516ac91226d2b41f93b35cb5197c8d94f7189/LICENSE",
+      "licenseSha256": "5d367fb0a07340571542eb4ee8eb1add62d37b71bad6786a57c2e9a86bf76c70"
+    },
+    {
+      "name": "@ant-design/react-slick",
+      "version": "2.0.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@ant-design/react-slick"
+      ],
+      "evidence": "installed package: node_modules/@ant-design/react-slick",
+      "licenseSha256": "95d848d55392bb8239b53cb7a6405bf3914bdab56d1a0d26f3af5f7aced776eb"
+    },
+    {
+      "name": "@babel/runtime",
+      "version": "7.29.10",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@babel/runtime"
+      ],
+      "evidence": "installed package: node_modules/@babel/runtime",
+      "licenseSha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76"
+    },
+    {
+      "name": "@emotion/hash",
+      "version": "0.8.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@emotion/hash"
+      ],
+      "evidence": "installed package: node_modules/@emotion/hash",
+      "licenseSha256": "6e8d23763cf7cb707ad8f6677aa502ebeca1dda447e6d6e57f6549c1625b9c4a"
+    },
+    {
+      "name": "@emotion/unitless",
+      "version": "0.7.5",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@emotion/unitless"
+      ],
+      "evidence": "installed package: node_modules/@emotion/unitless",
+      "licenseSha256": "6e8d23763cf7cb707ad8f6677aa502ebeca1dda447e6d6e57f6549c1625b9c4a"
+    },
+    {
+      "name": "@rc-component/async-validator",
+      "version": "6.0.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/async-validator"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/async-validator",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/cascader",
+      "version": "1.22.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/cascader"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/cascader",
+      "licenseSha256": "e7a5885bdc3dd3931bb91d1e9cf7a27a7a18e5d7975be7a6e40af3ff953f19c4"
+    },
+    {
+      "name": "@rc-component/checkbox",
+      "version": "2.0.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/checkbox"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/checkbox",
+      "licenseSha256": "212a6f81849cae76de28ce0c35286ae750488cdc2ed25b19d4f144da21125521"
+    },
+    {
+      "name": "@rc-component/collapse",
+      "version": "1.2.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/collapse"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/collapse",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/color-picker",
+      "version": "3.1.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/color-picker"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/color-picker",
+      "licenseSha256": "8a894af015d320e0d534a14d6ae1895e07cb072678050d34b66be7e579c36a67"
+    },
+    {
+      "name": "@rc-component/context",
+      "version": "2.0.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/context"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/context",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/dialog",
+      "version": "1.10.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/dialog"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/dialog",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/drawer",
+      "version": "1.4.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/drawer"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/drawer",
+      "licenseSha256": "6db0a962e5898831124a7e7465d4cf3ad849d121f97a618046b7a7f41fd2b031"
+    },
+    {
+      "name": "@rc-component/dropdown",
+      "version": "1.0.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/dropdown"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/dropdown",
+      "licenseSha256": "4973f756e858531bdae451f98054278dabd2ef50fc4d3dbccc084ee35964ad3d"
+    },
+    {
+      "name": "@rc-component/form",
+      "version": "1.8.6",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/form"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/form",
+      "licenseSha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+    },
+    {
+      "name": "@rc-component/image",
+      "version": "1.10.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/image"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/image",
+      "licenseSha256": "6f8a52e3c188436ea56c2917c7e6c99b10d6cdedcfe4ef8fbec77f2784f69459"
+    },
+    {
+      "name": "@rc-component/input",
+      "version": "1.3.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/input"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/input",
+      "licenseSha256": "2481b61123d4f8be84e11847d4bc9684f2aa073d1d2a3275e36fdb7f1cff019a"
+    },
+    {
+      "name": "@rc-component/input-number",
+      "version": "1.6.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/input-number"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/input-number",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/listy",
+      "version": "1.2.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/listy"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/listy",
+      "licenseSha256": "4973f756e858531bdae451f98054278dabd2ef50fc4d3dbccc084ee35964ad3d"
+    },
+    {
+      "name": "@rc-component/mentions",
+      "version": "1.12.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/mentions"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/mentions",
+      "licenseSha256": "1d9a10d28cf0556560f07824885f0bd3191a3b9b949181738b9bab8a5c4c8008"
+    },
+    {
+      "name": "@rc-component/menu",
+      "version": "1.5.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/menu"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/menu",
+      "licenseSha256": "1263f8ebc9bb6fe0a7097fceca63d6c1154902ae37d9574853482860c6c646b3"
+    },
+    {
+      "name": "@rc-component/mini-decimal",
+      "version": "1.1.4",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/mini-decimal"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/mini-decimal",
+      "licenseSha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+    },
+    {
+      "name": "@rc-component/motion",
+      "version": "1.3.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/motion"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/motion",
+      "licenseSha256": "2481b61123d4f8be84e11847d4bc9684f2aa073d1d2a3275e36fdb7f1cff019a"
+    },
+    {
+      "name": "@rc-component/mutate-observer",
+      "version": "2.0.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/mutate-observer"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/mutate-observer",
+      "licenseSha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+    },
+    {
+      "name": "@rc-component/notification",
+      "version": "2.0.9",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/notification"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/notification",
+      "licenseSha256": "1263f8ebc9bb6fe0a7097fceca63d6c1154902ae37d9574853482860c6c646b3"
+    },
+    {
+      "name": "@rc-component/overflow",
+      "version": "1.0.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/overflow"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/overflow",
+      "licenseSha256": "2481b61123d4f8be84e11847d4bc9684f2aa073d1d2a3275e36fdb7f1cff019a"
+    },
+    {
+      "name": "@rc-component/pagination",
+      "version": "1.4.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/pagination"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/pagination",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/picker",
+      "version": "1.12.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/picker"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/picker",
+      "licenseSha256": "cc85ebfb77d390c5fe422005fd5c6c5dc13d99da85a41a8e85c06535b5e6b594"
+    },
+    {
+      "name": "@rc-component/portal",
+      "version": "2.2.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/portal"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/portal",
+      "licenseSha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+    },
+    {
+      "name": "@rc-component/progress",
+      "version": "1.0.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/progress"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/progress",
+      "licenseSha256": "1263f8ebc9bb6fe0a7097fceca63d6c1154902ae37d9574853482860c6c646b3"
+    },
+    {
+      "name": "@rc-component/qrcode",
+      "version": "2.0.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/qrcode"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/qrcode",
+      "licenseSha256": "4973f756e858531bdae451f98054278dabd2ef50fc4d3dbccc084ee35964ad3d"
+    },
+    {
+      "name": "@rc-component/rate",
+      "version": "1.0.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/rate"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/rate",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/resize-observer",
+      "version": "1.1.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/resize-observer"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/resize-observer",
+      "licenseSha256": "2481b61123d4f8be84e11847d4bc9684f2aa073d1d2a3275e36fdb7f1cff019a"
+    },
+    {
+      "name": "@rc-component/segmented",
+      "version": "1.4.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/segmented"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/segmented",
+      "licenseSha256": "cc85ebfb77d390c5fe422005fd5c6c5dc13d99da85a41a8e85c06535b5e6b594"
+    },
+    {
+      "name": "@babel/runtime",
+      "version": "8.1.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/segmented/node_modules/@babel/runtime",
+        "node_modules/@rc-component/virtual-list/node_modules/@babel/runtime"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/segmented/node_modules/@babel/runtime",
+      "licenseSha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76"
+    },
+    {
+      "name": "@rc-component/select",
+      "version": "1.10.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/select"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/select",
+      "licenseSha256": "e7a5885bdc3dd3931bb91d1e9cf7a27a7a18e5d7975be7a6e40af3ff953f19c4"
+    },
+    {
+      "name": "@rc-component/slider",
+      "version": "1.1.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/slider"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/slider",
+      "licenseSha256": "4973f756e858531bdae451f98054278dabd2ef50fc4d3dbccc084ee35964ad3d"
+    },
+    {
+      "name": "@rc-component/steps",
+      "version": "1.2.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/steps"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/steps",
+      "licenseSha256": "1263f8ebc9bb6fe0a7097fceca63d6c1154902ae37d9574853482860c6c646b3"
+    },
+    {
+      "name": "@rc-component/switch",
+      "version": "1.0.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/switch"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/switch",
+      "licenseSha256": "5d0427088e37071c4b942de990f6365d5c2d195f3e957ce925322d184784e2eb"
+    },
+    {
+      "name": "@rc-component/table",
+      "version": "1.11.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/table"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/table",
+      "licenseSha256": "6f8a52e3c188436ea56c2917c7e6c99b10d6cdedcfe4ef8fbec77f2784f69459"
+    },
+    {
+      "name": "@rc-component/tabs",
+      "version": "1.13.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/tabs"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/tabs",
+      "licenseSha256": "1263f8ebc9bb6fe0a7097fceca63d6c1154902ae37d9574853482860c6c646b3"
+    },
+    {
+      "name": "@rc-component/tooltip",
+      "version": "1.5.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/tooltip"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/tooltip",
+      "licenseSha256": "59d606be3d687e4dfcaecb9aebcebeb048c940ee613a4a820b759e0345d31e8d"
+    },
+    {
+      "name": "@rc-component/tour",
+      "version": "2.4.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/tour"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/tour",
+      "licenseSha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+    },
+    {
+      "name": "@rc-component/tree",
+      "version": "1.4.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/tree"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/tree",
+      "licenseSha256": "19b049540295df0dff542ef4a9a33e3c5a6834dd86dc7261dc95a75cccf5cf03"
+    },
+    {
+      "name": "@rc-component/tree-select",
+      "version": "1.16.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/tree-select"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/tree-select",
+      "licenseSha256": "19b049540295df0dff542ef4a9a33e3c5a6834dd86dc7261dc95a75cccf5cf03"
+    },
+    {
+      "name": "@rc-component/trigger",
+      "version": "3.10.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/trigger"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/trigger",
+      "licenseSha256": "4973f756e858531bdae451f98054278dabd2ef50fc4d3dbccc084ee35964ad3d"
+    },
+    {
+      "name": "@rc-component/upload",
+      "version": "1.1.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/upload"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/upload",
+      "licenseSha256": "883dc1623d6382c603f2b66f6a04eff69f835d61b638a67923156b4ac772fda6"
+    },
+    {
+      "name": "@rc-component/util",
+      "version": "1.14.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/util"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/util",
+      "licenseSha256": "f3ae1f96cf22ff7028a4a908b2bf099968391fe06785e4d830926b07e5125ea6"
+    },
+    {
+      "name": "@rc-component/virtual-list",
+      "version": "1.6.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/@rc-component/virtual-list"
+      ],
+      "evidence": "installed package: node_modules/@rc-component/virtual-list",
+      "licenseSha256": "59d606be3d687e4dfcaecb9aebcebeb048c940ee613a4a820b759e0345d31e8d"
+    },
+    {
+      "name": "antd",
+      "version": "6.6.4",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/antd"
+      ],
+      "evidence": "installed package: node_modules/antd",
+      "licenseSha256": "3c82654bb472ebbcacc4c1ff00f94aa8c60c4b7ee011b16bafcbacecc3703458"
+    },
+    {
+      "name": "@ant-design/icons",
+      "version": "6.3.4",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/antd/node_modules/@ant-design/icons"
+      ],
+      "evidence": "installed package: node_modules/antd/node_modules/@ant-design/icons",
+      "licenseSha256": "5d367fb0a07340571542eb4ee8eb1add62d37b71bad6786a57c2e9a86bf76c70"
+    },
+    {
+      "name": "clsx",
+      "version": "2.1.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/clsx"
+      ],
+      "evidence": "installed package: node_modules/clsx",
+      "licenseSha256": "9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97"
+    },
+    {
+      "name": "compute-scroll-into-view",
+      "version": "3.1.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/compute-scroll-into-view"
+      ],
+      "evidence": "installed package: node_modules/compute-scroll-into-view",
+      "licenseSha256": "dfe2b2d612c7c1de1f32dcab5969bd68ecac0022a7582ca8cd4594729b9c8664"
+    },
+    {
+      "name": "cookie",
+      "version": "1.1.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/cookie"
+      ],
+      "evidence": "installed package: node_modules/cookie",
+      "licenseSha256": "c02110eedc16c7114f1a9bdc026c65626ce1d9c7e27fd51a8e0feee8a48a6858"
+    },
+    {
+      "name": "csstype",
+      "version": "3.2.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/csstype"
+      ],
+      "evidence": "installed package: node_modules/csstype",
+      "licenseSha256": "11d55bd4541c75ee7879547ac49089c489163dae49551389713c3d026cab383e"
+    },
+    {
+      "name": "dayjs",
+      "version": "1.11.23",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/dayjs"
+      ],
+      "evidence": "installed package: node_modules/dayjs",
+      "licenseSha256": "5faab7526d055651be3aab769d58897be6bd91f3d39d137f25f12dba1b31d5dc"
+    },
+    {
+      "name": "is-mobile",
+      "version": "5.0.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/is-mobile"
+      ],
+      "evidence": "installed package README.md license section: node_modules/is-mobile",
+      "licenseSha256": "3a7c107a9e6227f8e67ae8aab097925e6ba81f210193eef54ff38f7b0023fb39"
+    },
+    {
+      "name": "json2mq",
+      "version": "0.2.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/json2mq"
+      ],
+      "evidence": "installed package: node_modules/json2mq",
+      "licenseSha256": "95d848d55392bb8239b53cb7a6405bf3914bdab56d1a0d26f3af5f7aced776eb"
+    },
+    {
+      "name": "react",
+      "version": "19.2.7",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/react"
+      ],
+      "evidence": "installed package: node_modules/react",
+      "licenseSha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.2.7",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/react-dom"
+      ],
+      "evidence": "installed package: node_modules/react-dom",
+      "licenseSha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "name": "react-is",
+      "version": "19.3.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/react-is"
+      ],
+      "evidence": "installed package: node_modules/react-is",
+      "licenseSha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "name": "react-router",
+      "version": "7.18.4",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/react-router"
+      ],
+      "evidence": "installed package: node_modules/react-router",
+      "licenseSha256": "77c9ee6a9c5d5782fb0c50b50d101189116314c14f7df0a1b0d385fc96a7ba49"
+    },
+    {
+      "name": "react-router-dom",
+      "version": "7.18.4",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/react-router-dom"
+      ],
+      "evidence": "installed package: node_modules/react-router-dom",
+      "licenseSha256": "77c9ee6a9c5d5782fb0c50b50d101189116314c14f7df0a1b0d385fc96a7ba49"
+    },
+    {
+      "name": "scheduler",
+      "version": "0.27.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/scheduler"
+      ],
+      "evidence": "installed package: node_modules/scheduler",
+      "licenseSha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "name": "scroll-into-view-if-needed",
+      "version": "3.1.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/scroll-into-view-if-needed"
+      ],
+      "evidence": "installed package: node_modules/scroll-into-view-if-needed",
+      "licenseSha256": "62b9f69bb4ccf131e7e4cc8ce6ec5b4acf3d9848f0ac73c3c2f285d716ff1b5c"
+    },
+    {
+      "name": "set-cookie-parser",
+      "version": "2.7.3",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/set-cookie-parser"
+      ],
+      "evidence": "installed package: node_modules/set-cookie-parser",
+      "licenseSha256": "c5c6c5183a789d122f267c405f685037efb87e27fcde28ab1dd7378a2d2f5962"
+    },
+    {
+      "name": "string-convert",
+      "version": "0.2.1",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/string-convert"
+      ],
+      "evidence": "installed package: node_modules/string-convert",
+      "licenseSha256": "8e7a0e17a14c91d325c22a8ade50da3aaa5a97e321beebbdce77d63fc719a1c2"
+    },
+    {
+      "name": "stylis",
+      "version": "4.4.0",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/stylis"
+      ],
+      "evidence": "installed package: node_modules/stylis",
+      "licenseSha256": "88c579c6ee44b41137a21321190d177982e5b17d4fa1b83a4a2e3ea325a8fc9a"
+    },
+    {
+      "name": "throttle-debounce",
+      "version": "5.0.2",
+      "license": "MIT",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Retain copyright and complete permission/disclaimer notices in source and distributions."
+      ],
+      "installedPaths": [
+        "node_modules/throttle-debounce"
+      ],
+      "evidence": "installed package: node_modules/throttle-debounce",
+      "licenseSha256": "b07649c798231a321f90abbb329c15e41a8b5ec5e814dde3e60cd4a470e3b012"
+    }
+  ],
+  "applicationComponents": [
+    {
+      "name": "React Bits free application effects",
+      "files": [
+        "LoginAurora.tsx",
+        "LoginBorderGlow.tsx",
+        "LoginBorderGlow.css"
+      ],
+      "license": "LicenseRef-ReactBits-MIT-Commons-Clause",
+      "freeCommercialUse": true,
+      "conditions": [
+        "Use only as part of the application or website.",
+        "Retain the original license and David Haz copyright.",
+        "Do not relicense, extract or redistribute as a standalone reusable component offering.",
+        "React Bits Pro is not covered."
+      ],
+      "evidence": [
+        "https://github.com/DavidHDev/react-bits/blob/ecdd797468fc87f7b463157627d1174b0c36fdf5/LICENSE.md",
+        "https://github.com/DavidHDev/react-bits/discussions/1111",
+        "https://github.com/DavidHDev/react-bits/discussions/1101"
+      ],
+      "licenseSha256": "f4c33af6739191537738662d223b68d77bc226f4b57ea883e16481d8cc5c73c9"
+    }
+  ]
+}

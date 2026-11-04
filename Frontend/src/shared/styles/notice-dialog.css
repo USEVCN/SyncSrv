@@ -1,0 +1,112 @@
+/* Shared notices and confirmations; forms, browse and login dialogs keep their layout. */
+:is(.ant-modal-confirm, .session-layer .ant-modal:not(.session-auth-modal)) {
+    --app-dialog-min-height: 140px;
+    --notice-divider: var(--ss-color-border-secondary, #27334a);
+    --notice-footer-bg: color-mix(in srgb, var(--ss-color-bg-container, #101729) 94%, white 6%);
+}
+:is(.ant-modal-confirm, .session-layer .ant-modal:not(.session-auth-modal)) .ant-modal-container {
+    padding: 0 !important;
+    border-radius: 12px;
+}
+:is(.ant-modal-confirm, .session-layer .ant-modal:not(.session-auth-modal)) .ant-modal-header {
+    display: block;
+    margin: 0;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--notice-divider);
+    border-radius: 12px 12px 0 0;
+    background: transparent;
+}
+:is(.ant-modal-confirm, .session-layer .ant-modal:not(.session-auth-modal)) .ant-modal-title {
+    color: var(--ss-color-text, #eef2ff);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+    overflow-wrap: anywhere;
+}
+:is(.ant-modal-confirm, .session-layer .ant-modal:not(.session-auth-modal)) .ant-modal-body {
+    margin: 0;
+    color: var(--ss-color-text-secondary, #b3bfd3);
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+.session-layer .ant-modal:not(.session-auth-modal) .ant-modal-body {
+    padding: 16px 20px;
+}
+.ant-modal-confirm .ant-modal-body { padding: 0; }
+.ant-modal-confirm .ant-modal-confirm-body-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.ant-modal-confirm .ant-modal-confirm-body {
+    margin: 0;
+    padding: 18px 20px;
+    gap: 0;
+}
+.ant-modal-confirm .ant-modal-confirm-paragraph {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+}
+/* AntD repeats the title in the body. Keep a single title in the header. */
+.ant-modal-confirm .ant-modal-confirm-title { display: none !important; }
+.ant-modal-confirm .ant-modal-confirm-content {
+    margin: 0 !important;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.ant-modal-confirm:has(.ant-modal-confirm-body > .anticon) .ant-modal-header { padding-left: 48px; }
+.ant-modal-confirm .ant-modal-confirm-body > .anticon {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+}
+:is(.ant-modal-confirm .ant-modal-confirm-btns, .session-layer .ant-modal:not(.session-auth-modal) .ant-modal-footer) {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 5px 16px;
+    border-top: 1px solid var(--notice-divider);
+    border-radius: 0 0 12px 12px;
+    background: var(--notice-footer-bg);
+}
+.ant-modal-confirm .ant-modal-confirm-btns {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+:is(.ant-modal-confirm .ant-modal-confirm-btns, .session-layer .ant-modal:not(.session-auth-modal) .ant-modal-footer) .ant-btn {
+    min-width: 64px;
+    height: 28px;
+    margin-inline-start: 0 !important;
+    padding: 0 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 26px;
+    box-shadow: none;
+}
+@media (max-width: 480px) {
+    :is(.ant-modal-confirm, .session-layer .ant-modal:not(.session-auth-modal)) { max-width: calc(100vw - 32px); }
+}
+
+/* Confirm actions live inside the AntD body, unlike ordinary modal footers.
+   Propagate the chosen height through both wrappers and scroll only the text. */
+.ant-modal-confirm.app-dialog-resized .ant-modal-body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden !important;
+}
+.ant-modal-confirm.app-dialog-resized .ant-modal-confirm-body-wrapper {
+    flex: 1 1 0;
+    min-height: 0;
+}
+.ant-modal-confirm.app-dialog-resized .ant-modal-confirm-body {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: auto;
+}

@@ -1,0 +1,24 @@
+[Unit]
+Description=SyncSrv file synchronization and auditable recovery
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=syncsrv
+Group=syncsrv
+WorkingDirectory=/var/lib/syncsrv
+Environment=SYNCSRV_ENV_FILE=/etc/syncsrv/syncsrv.env
+ExecStart=/opt/syncsrv/current/bin/start.sh
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=90
+SuccessExitStatus=143
+UMask=0027
+NoNewPrivileges=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

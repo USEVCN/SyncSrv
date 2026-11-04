@@ -1,0 +1,33 @@
+/* SyncSrv-specific metric layouts. Shared surfaces live in AppShell.css. */
+.discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.discovery-grid .metric-value {
+  font-size: var(--ui-font-display, 28px);
+  font-weight: 600;
+  color: #eef2ff;
+  margin-top: 8px;
+}
+.discovery-health {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.discovery-detail {
+  display: grid;
+  gap: 16px;
+}
+.install-command {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #080c18;
+  padding: 16px;
+  border: 1px solid #27334f;
+  border-radius: 10px;
+  color: #b1cfe9;
+}
+@media (max-width: 900px) { .discovery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 540px) { .discovery-grid { grid-template-columns: 1fr; } }

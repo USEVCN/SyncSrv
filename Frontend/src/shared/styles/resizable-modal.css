@@ -1,0 +1,161 @@
+.app-resizable-dialog-frame {
+    --app-dialog-resize-gap: 6px;
+    --app-dialog-resize-stroke: 2px;
+    --app-dialog-resize-outset: calc(var(--app-dialog-resize-gap) + var(--app-dialog-resize-stroke));
+    --app-dialog-corner-radius: var(--ss-border-radius-lg, 14px);
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    pointer-events: auto;
+}
+
+.app-resizable-dialog.app-dialog-resized > .ant-modal-render,
+.app-resizable-dialog.app-dialog-resized > .ant-modal-render > .app-resizable-dialog-frame {
+    height: 100%;
+    min-height: 0;
+}
+
+.app-resizable-dialog.app-dialog-resized .app-resizable-dialog-frame > .ant-modal-container,
+.app-resizable-dialog.app-dialog-resized .app-resizable-dialog-frame .ant-modal-container {
+    display: flex;
+    height: 100%;
+    min-height: 0;
+    flex-direction: column;
+}
+
+.app-resizable-dialog.app-dialog-resized .ant-modal-header,
+.app-resizable-dialog.app-dialog-resized .ant-modal-footer {
+    flex: 0 0 auto;
+}
+
+.app-resizable-dialog.app-dialog-resized .ant-modal-body {
+    /* AntD writes Modal `styles.body` values inline. Once the user chooses a
+       custom dialog size, the body must follow that size instead of clipping. */
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    flex: 1 1 auto;
+    overflow: auto !important;
+}
+
+/* Complex split-view dialogs can opt in so their primary workspace grows and
+   shrinks with the body instead of keeping its original viewport clamp. */
+.app-resizable-dialog.app-dialog-resized .app-resizable-modal-fill {
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: none !important;
+}
+
+.app-dialog-resize-handle {
+    position: absolute;
+    z-index: 20;
+    display: none;
+    touch-action: none;
+    user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .app-resizable-dialog :is(.ant-modal-header, .ant-modal-confirm-title) {
+        cursor: move;
+        user-select: none;
+    }
+
+    .app-dialog-resize-handle {
+        display: block;
+    }
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='n'],
+.app-dialog-resize-handle[data-dialog-resize-handle='s'] {
+    right: 14px;
+    left: 14px;
+    height: 10px;
+    cursor: ns-resize;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='n'] {
+    top: -5px;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='s'] {
+    bottom: -5px;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='e'],
+.app-dialog-resize-handle[data-dialog-resize-handle='w'] {
+    top: 14px;
+    bottom: 14px;
+    width: 10px;
+    cursor: ew-resize;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='e'] {
+    right: -5px;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='w'] {
+    left: -5px;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='ne'],
+.app-dialog-resize-handle[data-dialog-resize-handle='nw'],
+.app-dialog-resize-handle[data-dialog-resize-handle='se'],
+.app-dialog-resize-handle[data-dialog-resize-handle='sw'] {
+    width: 18px;
+    height: 18px;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='ne'] {
+    top: -7px;
+    right: -7px;
+    cursor: nesw-resize;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='nw'] {
+    top: -7px;
+    left: -7px;
+    cursor: nwse-resize;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='se'] {
+    /* Keep the visible arc inside the hit area, including 4px of outer padding. */
+    right: calc(-1 * (var(--app-dialog-resize-outset) + 4px));
+    bottom: calc(-1 * (var(--app-dialog-resize-outset) + 4px));
+    width: calc(var(--app-dialog-corner-radius) + var(--app-dialog-resize-outset) + 4px);
+    height: calc(var(--app-dialog-corner-radius) + var(--app-dialog-resize-outset) + 4px);
+    cursor: nwse-resize;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='sw'] {
+    bottom: -7px;
+    left: -7px;
+    cursor: nesw-resize;
+}
+
+.app-dialog-resize-handle[data-dialog-resize-handle='se']::after {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    box-sizing: border-box;
+    /* Six clear pixels between the dialog border and the INSIDE of the stroke. */
+    width: calc(var(--app-dialog-corner-radius) + var(--app-dialog-resize-outset));
+    height: calc(var(--app-dialog-corner-radius) + var(--app-dialog-resize-outset));
+    border-right: var(--app-dialog-resize-stroke) solid var(--ss-color-primary, #2F6B9A);
+    border-bottom: var(--app-dialog-resize-stroke) solid var(--ss-color-primary, #2F6B9A);
+    border-radius: 0 0 100% 0;
+    /* Retain only the middle of the arc: a compact cue, not a second border. */
+    clip-path: inset(38% 0 0 38%);
+    content: '';
+    opacity: 0.9;
+}
+
+body.app-dialog-is-resizing,
+body.app-dialog-is-moving {
+    cursor: var(--app-dialog-resize-cursor, default);
+    user-select: none;
+}
+
+body.app-dialog-is-resizing *,
+body.app-dialog-is-moving * {
+    cursor: inherit !important;
+}

@@ -1,0 +1,203 @@
+/* Sidebar-only refinements: keep menus in editors, dialogs and mobile untouched. */
+.app-sidebar.ant-layout-sider {
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, #111a2c55, transparent 38%), #0c1221;
+    border-right: var(--ss-line-width, 0.5px) solid #b9cafa12;
+}
+.app-sidebar .ant-layout-sider-children { display: flex; flex-direction: column; }
+.app-sidebar-brand { flex-shrink: 0; }
+.app-sidebar-brand-copy { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.app-sidebar-brand-name { color: #e5ecf8; font-size: var(--ui-font-section, 16px); font-weight: 600; line-height: 1.2; letter-spacing: -0.3px; }
+.app-sidebar-brand-caption { color: #8694ac; font-size: var(--ui-font-caption, 11px); line-height: 1.4; white-space: nowrap; }
+.app-sidebar-navigation { flex: 1; min-height: 0; overflow: auto; padding: 12px 8px; scrollbar-width: thin; }
+.app-sidebar .app-sidebar-menu { background: transparent; border: 0; font-size: var(--ui-font-list, 13px); }
+.app-sidebar-menu .ant-menu-item-group + .ant-menu-item-group { margin-top: 18px; }
+.app-sidebar-menu .ant-menu-item-group-title {
+    padding: 0 16px 8px;
+    color: #8593ab;
+    font-size: var(--ui-font-caption, 11px);
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+.app-sidebar-menu .ant-menu-item-group-list { margin: 0; }
+.app-sidebar .app-sidebar-menu .ant-menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 38px;
+    line-height: 38px;
+    width: 100%;
+    margin: 3px 0;
+    border: var(--ss-line-width, 0.5px) solid transparent;
+    border-radius: 7px;
+    color: #a4b1c7;
+    font-weight: 400;
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+.app-sidebar .app-sidebar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    flex: 0 0 18px;
+    line-height: 1;
+    color: #92a4bd;
+    vertical-align: middle;
+    transition: color 160ms ease;
+}
+.app-sidebar-icon svg { display: block; overflow: visible; }
+.app-sidebar-icon-detail { opacity: 0.62; transition: opacity 160ms ease; }
+.app-sidebar .app-sidebar-menu .ant-menu-item:hover .app-sidebar-icon,
+.app-sidebar .app-sidebar-collapse:hover .app-sidebar-icon { color: #bed6ef; }
+.app-sidebar .app-sidebar-menu .ant-menu-title-content { margin-inline-start: 12px; }
+.app-sidebar .app-sidebar-menu .ant-menu-item:not(.ant-menu-item-selected):hover { background: #abc4ec09; color: #e1e9f8; }
+.app-sidebar .app-sidebar-menu .ant-menu-item-selected {
+    background: linear-gradient(100deg, #4a8bcc20, #6a91cc0b);
+    border-color: #8ebcfa19;
+    color: #d8eaff;
+    font-weight: 500;
+    box-shadow: inset 0 0.5px 0 #b8d7ff08;
+}
+.app-sidebar .app-sidebar-menu .ant-menu-item-selected::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 11px;
+    bottom: 11px;
+    width: 2px;
+    border-radius: 2px;
+    background: #80b7ee;
+}
+.app-sidebar .app-sidebar-menu .ant-menu-item-selected .app-sidebar-icon { color: #9dcdf5; }
+.app-sidebar .ant-menu-item-selected .app-sidebar-icon-detail,
+.app-sidebar .ant-menu-item:hover .app-sidebar-icon-detail { opacity: 0.88; }
+.app-sidebar .app-sidebar-menu .ant-menu-item:focus-visible,
+.app-sidebar .app-sidebar-collapse:focus-visible { outline: 2px solid #80b7ee; outline-offset: -2px; }
+.app-sidebar-footer { flex-shrink: 0; margin: 0 16px; padding: 10px 0 12px; border-top: var(--ss-line-width, 0.5px) solid #b9cafa12; }
+.app-sidebar .app-sidebar-collapse { height: 34px; justify-content: flex-start; padding-inline: 8px; gap: 12px; font-size: var(--ui-font-compact, 12px); color: #8e9db6; }
+.app-sidebar .app-sidebar-collapse:hover { color: #d8eaff; background: #abc4ec09; }
+.app-sidebar.ant-layout-sider-collapsed .app-sidebar-brand { justify-content: center; }
+.app-sidebar.ant-layout-sider-collapsed .app-sidebar-navigation { padding-inline: 12px; }
+.app-sidebar.ant-layout-sider-collapsed .app-sidebar-menu { width: 100%; }
+.app-sidebar.ant-layout-sider-collapsed .ant-menu-item-group-title { display: none; }
+.app-sidebar.ant-layout-sider-collapsed .ant-menu-item-group + .ant-menu-item-group { margin-top: 16px; padding-top: 12px; border-top: var(--ss-line-width, 0.5px) solid #b9cafa12; }
+.app-sidebar.ant-layout-sider-collapsed .app-sidebar-menu .ant-menu-item { justify-content: center; padding-inline: 0; }
+.app-sidebar.ant-layout-sider-collapsed .app-sidebar-menu .ant-menu-title-content { display: none; }
+.app-sidebar.ant-layout-sider-collapsed .app-sidebar-collapse { justify-content: center; padding-inline: 0; }
+@media (prefers-reduced-motion: reduce) {
+    .app-sidebar, .app-sidebar .ant-menu-item,
+    .app-sidebar .app-sidebar-icon, .app-sidebar-icon-detail { transition: none; }
+}
+
+/* Dashboard-inspired surfaces for desktop management pages only.
+   Login, mobile, designers and portalled dialogs are outside this scope. */
+.app-main-content--glass {
+    --page-glass-border: #b9cafa16;
+    --page-glass-fill: linear-gradient(120deg, #1d29433d, #1e20382e 65%, #152d3526), #101829b8;
+    --page-glass-shadow: 0 8px 26px #03060e12;
+    background-image:
+        radial-gradient(ellipse at 75% 0%, #7356ed30, transparent 57%),
+        radial-gradient(ellipse at 9% 16%, #2879d124, transparent 56%),
+        radial-gradient(ellipse at 98% 46%, #289ea515, transparent 49%);
+    background-size: 100% 780px;
+    background-repeat: no-repeat;
+}
+
+.app-main-content--glass .list-page-header {
+    min-height: 88px;
+    padding: 20px 24px;
+    align-items: center;
+    border: var(--ss-line-width, 0.5px) solid #adbbff1c;
+    border-radius: 16px;
+    background: linear-gradient(115deg, #151d37b8, #20244442 62%, #26315e30);
+    box-shadow: var(--page-glass-shadow);
+    -webkit-backdrop-filter: blur(18px) saturate(115%);
+    backdrop-filter: blur(18px) saturate(115%);
+}
+
+.app-main-content--glass .ant-card,
+.app-main-content--glass .ant-card.list-table-card {
+    border: var(--ss-line-width, 0.5px) solid var(--page-glass-border);
+    border-radius: 14px;
+    background: var(--page-glass-fill);
+    box-shadow: var(--page-glass-shadow);
+    -webkit-backdrop-filter: blur(18px) saturate(115%);
+    backdrop-filter: blur(18px) saturate(115%);
+}
+
+/* Avoid stacking expensive blur layers inside a parent glass panel. */
+.app-main-content--glass .ant-card .ant-card {
+    background: #0d152547;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+.app-main-content--glass .ant-card-head {
+    min-height: 48px;
+    border-bottom-color: #b9cafa12;
+    font-size: var(--ui-font-body, 14px);
+    font-weight: 500;
+}
+.app-main-content--glass .ant-table,
+.app-main-content--glass .ant-table-container {
+    background: transparent;
+}
+.app-main-content--glass .ant-table-thead > tr > th,
+.app-main-content--glass .ant-table-thead > tr > td {
+    background: #96abd00a;
+    border-bottom-color: #b9cafa14;
+}
+.app-main-content--glass .ant-table-thead th.ant-table-column-sort {
+    background: #9daee510;
+}
+.app-main-content--glass .ant-table-thead th.ant-table-column-has-sorters:hover {
+    background: #9daee51a;
+}
+.app-main-content--glass .ant-table-tbody > tr > td { border-bottom-color: #b9cafa0d; }
+.app-main-content--glass .ant-table-tbody td.ant-table-column-sort { background: #9daee506; }
+.app-main-content--glass .ant-table-tbody > tr > td.ant-table-cell-row-hover { background: #769fdd0c; }
+.app-main-content--glass .ant-table-tbody > tr.ant-table-row-selected > td { background: #23466385; }
+.app-main-content--glass .ant-table-tbody > tr.ant-table-row-selected > td.ant-table-cell-row-hover { background: #2b557a9e; }
+
+/* Fixed cells must stay opaque so horizontally-scrolled content cannot show through. */
+.app-main-content--glass .ant-table-thead > tr > .ant-table-cell-fix { background: #182137; }
+.app-main-content--glass .ant-table-tbody > tr > .ant-table-cell-fix { background: #121c30; }
+.app-main-content--glass .ant-table-tbody > tr > .ant-table-cell-fix.ant-table-cell-row-hover { background: #1a2840; }
+.app-main-content--glass .ant-table-tbody > tr.ant-table-row-selected > .ant-table-cell-fix { background: #203d58; }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .app-main-content--glass .list-page-header,
+    .app-main-content--glass .ant-card,
+    .app-main-content--glass .ant-card.list-table-card { background: #131c30; }
+}
+@media (max-width: 760px) {
+    .app-main-content--glass .list-page-header { min-height: 76px; padding: 16px; }
+}
+@media print {
+    .app-main-content--glass { background-image: none; }
+    .app-main-content--glass .list-page-header,
+    .app-main-content--glass .ant-card {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        box-shadow: none;
+    }
+}
+
+/* Small screens use an overlay navigation so content and account actions retain the full width. */
+@media (max-width: 600px) {
+    .app-sidebar.ant-layout-sider { position: fixed; inset: 0 auto 0 0; z-index: 900; }
+    .app-sidebar.ant-layout-sider-zero-width { overflow: hidden; }
+    .app-sidebar-scrim { position: fixed; inset: 0; z-index: 850; padding: 0; border: 0; background: #03060e66; cursor: pointer; }
+    .app-shell-header.ant-layout-header { padding-inline: 12px; }
+    .topbar-content { gap: 8px; min-width: 0; }
+    .topbar-content > .ant-typography { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .topbar-content > .ant-btn { flex-shrink: 0; }
+    .topbar-content > .ant-dropdown-trigger .ant-typography { display: block; max-width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .app-mobile-navigation { flex-shrink: 0; }
+}

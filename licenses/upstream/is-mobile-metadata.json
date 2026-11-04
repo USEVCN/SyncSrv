@@ -1,0 +1,10 @@
+{
+  "package": "is-mobile",
+  "version": "5.0.0",
+  "license": "MIT",
+  "gitHead": "2708dd8f07d91f354a46b8dff3053abb6b840067",
+  "repository": {
+    "url": "git://github.com/juliangruber/is-mobile.git",
+    "type": "git"
+  }
+}

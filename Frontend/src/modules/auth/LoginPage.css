@@ -1,0 +1,298 @@
+/* A portrait layout keeps the brand and login controls legible on wide screens. */
+.auth-login {
+    --login-logo-size: 72px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    padding: 32px 24px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--ss-color-bg-layout, #080c18);
+}
+
+.auth-login-aurora {
+    position: fixed;
+    inset: -20px -28px auto;
+    height: min(90vh, 1000px);
+    min-height: 420px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.75;
+    transform: translate3d(var(--aurora-x, 0px), var(--aurora-y, 0px), 0);
+    transition: transform 800ms ease-out;
+    background:
+        radial-gradient(ellipse at 0% 0%, #7cff6770, transparent 60%),
+        radial-gradient(ellipse at 52% 0%, #b497cf50, transparent 55%),
+        radial-gradient(ellipse at 100% 0%, #5227ff90, transparent 58%);
+}
+.auth-login-aurora[data-renderer="webgl"] { background: none; }
+.auth-login-aurora canvas { display: block; width: 100%; height: 100%; }
+
+.auth-language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    border: 1px solid #bbceee21;
+    border-radius: 10px;
+    background: #14203840;
+    backdrop-filter: blur(12px);
+    color: #98a9c7;
+    font-size: var(--ui-font-compact, 12px);
+    font-weight: 400;
+}
+.auth-language-switch > .anticon { margin: 0 5px; font-size: 13px; }
+.auth-language-switch button {
+    appearance: none;
+    padding: 5px 10px;
+    min-height: 28px;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    line-height: 18px;
+    color: #aabbda;
+    background: transparent;
+    cursor: pointer;
+    transition: background 180ms, color 180ms;
+}
+.auth-language-switch button:hover { color: #f0f5ff; background: #aacbff12; }
+.auth-language-switch button[aria-pressed="true"] { color: #eef4ff; background: #a6c9ff20; }
+.auth-language-switch button:focus-visible { outline: 2px solid #96ccf7; outline-offset: 2px; }
+.auth-language-divider { width: 1px; height: 12px; background: #b2c8ee24; }
+.auth-login-language { position: absolute; z-index: 2; top: 24px; right: 28px; }
+/* The aurora and pointer-following border retain their renderer and timing. */
+.auth-card-scope .auth-login-frame {
+    background: transparent;
+    /* Lift the glass above the scene without thickening its animated edge. */
+    box-shadow:
+        inset 0 0 0 var(--edge-line-width) var(--edge-line-color),
+        0 8px 20px rgba(0, 0, 0, 0.28),
+        0 28px 72px rgba(0, 0, 0, 0.48);
+}
+.auth-card-scope .auth-login-card {
+    width: 100%;
+    border: 0;
+    border-radius: inherit;
+    /* A single tinted pane, not several fills over an opaque-looking base.
+       Preserve the existing aurora's contours like the dashboard hero does. */
+    background: linear-gradient(125deg, rgba(31, 43, 66, 0.76), rgba(21, 29, 48, 0.66) 56%, rgba(18, 25, 44, 0.62));
+    box-shadow: inset 0 1px 0 rgba(221, 234, 255, 0.08);
+    -webkit-backdrop-filter: blur(8px) saturate(115%);
+    backdrop-filter: blur(8px) saturate(115%);
+}
+
+.auth-card-scope .auth-login-card .ant-card-body {
+    padding: 56px 40px 40px;
+}
+
+.auth-login-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 64px;
+    text-align: center;
+}
+
+.auth-card-scope .auth-login-title {
+    margin: 0;
+    font-size: var(--ui-font-page, 22px);
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+}
+
+.auth-card-scope .auth-login-account {
+    margin-bottom: 22px;
+}
+
+.auth-card-scope .auth-login-password {
+    margin-bottom: 32px;
+}
+
+.auth-card-scope .auth-login-form .ant-input-affix-wrapper {
+    min-height: 52px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #0b142a80;
+    border-color: #b9cafa26;
+}
+.auth-card-scope .auth-login-form .ant-input-affix-wrapper:hover { border-color: #91b7e366; }
+.auth-card-scope .auth-login-form .ant-input-affix-wrapper-focused {
+    background: #0d1933b3;
+    border-color: var(--ss-color-primary, #2f6b9a);
+}
+
+.auth-card-scope .auth-login-form .ant-input-prefix {
+    margin-inline-end: 12px;
+    font-size: var(--ui-font-body, 14px);
+}
+
+.auth-card-scope .auth-login-form input {
+    font-size: var(--ui-font-list, 13px);
+}
+
+.auth-card-scope .auth-login-form input::placeholder {
+    color: var(--ss-color-text-tertiary, #70809f);
+}
+
+.auth-card-scope .auth-login-submit {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    height: 52px;
+    border-radius: 12px;
+    font-size: var(--ui-font-list, 13px);
+    font-weight: 500;
+    border: 1px solid #bbdeff24;
+    background: linear-gradient(115deg, #2a5778, #326e97 55%, #3d6893);
+    box-shadow: inset 0 1px 0 #dbeeff16, 0 5px 16px #030b2229;
+    transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease, border-color 220ms ease;
+}
+
+/* One soft reflection per interaction; never an idle looping animation. */
+.auth-card-scope .auth-login-submit::after {
+    content: '';
+    position: absolute;
+    inset: -40% auto -40% -65%;
+    width: 48%;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(100deg, transparent, #d4f0ff24 46%, #ffffff38 52%, transparent);
+    transform: translateX(0) skewX(-18deg);
+    opacity: 0;
+}
+.auth-card-scope .auth-login-submit > * { position: relative; z-index: 1; }
+
+@media (hover: hover) and (pointer: fine) {
+    .auth-card-scope .auth-login-submit:not(:disabled):not(.ant-btn-loading):hover {
+        transform: translateY(-2px);
+        border-color: #b6dfff52;
+        background: linear-gradient(115deg, #306383, #387ba4 55%, #4979a7);
+        box-shadow: inset 0 1px 0 #e3f3ff24, 0 7px 22px #08233966, 0 0 20px #8bbfff12;
+    }
+    .auth-card-scope .auth-login-submit:not(:disabled):not(.ant-btn-loading):hover::after {
+        animation: auth-login-button-sheen 760ms cubic-bezier(0.2, 0.6, 0.3, 1) both;
+    }
+}
+.auth-card-scope .auth-login-submit:not(:disabled):not(.ant-btn-loading):focus-visible {
+    outline: 2px solid #a8d8ff;
+    outline-offset: 4px;
+}
+.auth-card-scope .auth-login-submit:not(:disabled):not(.ant-btn-loading):focus-visible::after {
+    animation: auth-login-button-sheen 760ms cubic-bezier(0.2, 0.6, 0.3, 1) both;
+}
+.auth-card-scope .auth-login-submit:not(:disabled):not(.ant-btn-loading):active {
+    transform: translateY(0) scale(0.985);
+    transition-duration: 90ms;
+    box-shadow: inset 0 1px 4px #07162940, 0 2px 8px #030b2229;
+}
+.auth-card-scope .auth-login-submit:is(:disabled, .ant-btn-loading) {
+    transform: none;
+    transition: none;
+}
+.auth-card-scope .auth-login-submit:is(:disabled, .ant-btn-loading)::after { animation: none; opacity: 0; }
+
+@keyframes auth-login-button-sheen {
+    0% { transform: translateX(0) skewX(-18deg); opacity: 0; }
+    18% { opacity: 1; }
+    75% { opacity: 0.8; }
+    100% { transform: translateX(380%) skewX(-18deg); opacity: 0; }
+}
+
+.auth-login-error {
+    margin-bottom: 24px;
+    overflow-wrap: anywhere;
+}
+
+.auth-card-scope .auth-login-form .ant-form-item-explain,
+.auth-card-scope .auth-login-form .ant-alert-description { font-size: var(--ui-font-compact, 12px); line-height: 1.7; }
+.auth-card-scope .auth-login-form .ant-alert-title { font-size: var(--ui-font-list, 13px); font-weight: 500; }
+
+.auth-login-footer {
+    position: absolute;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 24px;
+    right: 24px;
+    text-align: center;
+    font-size: var(--ui-font-caption, 11px);
+    line-height: 20px;
+    letter-spacing: 0.35px;
+    color: #8393b3;
+}
+.auth-login-footer span { margin-inline: 9px; color: #5e7191; }
+.auth-login-floor {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: 12%;
+    right: 12%;
+    height: 28px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, #7198cf24 45%, #8d74d92e 65%, transparent);
+    filter: blur(22px);
+    border-radius: 50%;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .auth-card-scope .auth-login-card { background: #151e30f2; }
+}
+
+@media (min-width: 1800px) {
+    .auth-card-scope .auth-login-frame { width: 420px; }
+    .auth-card-scope .auth-login-card .ant-card-body { padding: 60px 44px 48px; }
+    .auth-login-brand { margin-bottom: 72px; }
+}
+
+@media (max-width: 480px) {
+    .auth-login { --login-logo-size: 60px; padding: 76px 16px 24px; }
+    .auth-login-language { top: 18px; right: 16px; }
+    .auth-card-scope .auth-login-frame { --border-radius: 22px; }
+    .auth-card-scope .auth-login-card .ant-card-body { padding: 40px 28px 32px; }
+    .auth-login-brand { gap: 18px; margin-bottom: 42px; }
+    .auth-card-scope .auth-login-title { font-size: var(--ui-font-page, 22px); line-height: 30px; }
+}
+
+/* Let the page scroll when a short window or the keyboard reduces available height. */
+@media (max-height: 580px) {
+    .auth-login { --login-logo-size: 48px; padding-block: 20px; }
+    .auth-card-scope .auth-login-card .ant-card-body { padding: 28px; }
+    .auth-login-brand { gap: 12px; margin-bottom: 32px; }
+}
+@media (max-height: 700px) {
+    .auth-login { padding-top: 76px; }
+    .auth-login-footer { position: static; flex: none; margin-top: 24px; }
+    .auth-login-floor { display: none; }
+}
+
+/* Match the Input component's theme, including its background override. */
+.auth-card-scope .ant-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--ss-input-active-bg, var(--ss-color-bg-container)) inset;
+    box-shadow: 0 0 0 1000px var(--ss-input-active-bg, var(--ss-color-bg-container)) inset;
+    -webkit-text-fill-color: var(--ss-color-text);
+    caret-color: var(--ss-color-text);
+}
+
+/* A stationary, subdued rear glow gives the moving aurora a second depth plane. */
+.auth-login::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 65% 38% at 52% 108%, #7166c952, transparent 85%),
+        radial-gradient(ellipse 55% 32% at 18% 108%, #285f8229, transparent 90%);
+}
+@media (prefers-reduced-motion: reduce) {
+    .auth-language-switch button { transition: none; }
+    .auth-login-aurora { transform: none; transition: none; }
+    .auth-card-scope .auth-login-submit,
+    .auth-card-scope .auth-login-submit:not(:disabled):not(.ant-btn-loading):is(:hover, :active) {
+        transform: none;
+        transition: none;
+    }
+    .auth-card-scope .auth-login-submit::after { display: none; animation: none !important; }
+}

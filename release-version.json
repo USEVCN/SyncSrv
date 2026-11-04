@@ -1,0 +1,8 @@
+{
+  "center": "0.4.3",
+  "agent": "0.16.0",
+  "schemaMin": 1,
+  "schemaMax": 1,
+  "minMacOS": "12.0",
+  "channel": "stable"
+}

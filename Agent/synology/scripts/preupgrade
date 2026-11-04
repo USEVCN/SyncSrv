@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec /var/packages/SyncSrvAgent/scripts/start-stop-status stop

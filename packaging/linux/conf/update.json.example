@@ -1,0 +1,4 @@
+{
+  "manifest": "http://192.168.50.118:18760/api/v1/projects/syncsrv/channels/stable/manifest?os=linux&arch=x64",
+  "allowHttpOrigin": "http://192.168.50.118:18760"
+}

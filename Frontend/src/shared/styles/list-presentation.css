@@ -1,0 +1,173 @@
+/* Shared list presentation. Deliberately scoped away from login and the designer. */
+.list-page { min-width: 0; }
+/* Column-filter portals belong to the table, not the global dialog layer.
+   Preserve normal scroll alignment and ancestor clipping; never clamp or auto-close. */
+.data-list-table { position: relative; isolation: isolate; }
+.list-page .list-page-header { align-items: center; }
+.list-page .list-page-header .ant-typography {
+    font-size: var(--ui-font-page, 22px);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.35px;
+}
+.list-page .list-page-header.is-compact .ant-typography { font-size: var(--ui-font-page, 22px); }
+.list-page .list-page-heading { column-gap: 8px; row-gap: 10px; }
+.list-page .list-page-heading > .list-page-actions { margin-inline-start: 6px; }
+.list-page .list-page-actions .ant-btn {
+    height: 28px;
+    padding-inline: 10px;
+    border-radius: 6px;
+    font-size: var(--ui-font-list, 13px);
+    font-weight: 400;
+    box-shadow: none;
+}
+.list-page .list-page-actions .ant-btn-default { border-color: #ffffff14; }
+.list-page .list-page-actions .ant-btn-default:not(:disabled):hover {
+    border-color: var(--ss-color-primary, #2f6b9a);
+}
+.list-page .list-page-actions .ant-btn:disabled { border-color: #ffffff0a; }
+.list-page .list-table-card {
+    border: var(--ss-line-width, 0.5px) solid #ffffff10;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.data-list-table .ant-table .ant-typography,
+.list-page .ant-table .ant-typography { font-size: inherit; }
+.data-list-table .ant-table-thead .ant-typography,
+.list-page .ant-table-thead .ant-typography { color: inherit; font-weight: 500; }
+.data-list-table .ant-table-tbody .ant-typography code,
+.list-page .ant-table-tbody .ant-typography code {
+    margin-inline: 0;
+    padding: 1px 5px;
+    border-color: #ffffff0a;
+    border-radius: 4px;
+    background: #ffffff06;
+    font-size: var(--ui-font-compact, 12px);
+    font-weight: 400;
+}
+.data-list-table .ant-table-tbody .ant-tag,
+.list-page .ant-table-tbody .ant-tag {
+    border-radius: 5px;
+    font-size: var(--ui-font-compact, 12px);
+    font-weight: 400;
+}
+.data-list-table .ant-table-cell { font-variant-numeric: tabular-nums; }
+.data-list-table .ant-table-thead > tr > th { position: relative; }
+/* Independent of drag handles: published/admin-managed columns still have separators. */
+.data-list-table .ant-table-thead > tr > th::before { display: none; }
+.data-list-header-divider {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 50%;
+    width: 1px;
+    height: 16px;
+    transform: translateY(-50%);
+    background: var(--ss-header-divider, #8aa3c43d);
+    pointer-events: none;
+}
+.data-list-table .ant-table-thead > tr > th:last-child > .data-list-header-divider { display: none; }
+.data-list-table .ant-table-thead .data-list-column-settings {
+    flex: none;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-inline: 2px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: transparent;
+    box-shadow: none;
+    color: #91a0b8;
+    font-size: var(--ui-font-compact, 12px);
+    transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+.data-list-table .ant-table-thead .data-list-column-settings:not(:disabled):hover {
+    color: #bddbf0;
+    border-color: #80b7df30;
+    background: #5795c614;
+}
+.data-list-table .ant-table-thead .data-list-column-settings:focus-visible {
+    outline: 1px solid #8dc3e8;
+    outline-offset: 1px;
+}
+.data-list-table .ant-table-thead .data-list-filter {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border-radius: 5px;
+    color: #8292ab;
+    font-size: var(--ui-font-compact, 12px);
+}
+.data-list-table .data-list-filter.is-active {
+    color: #70b7e5;
+    background: #2f6b9a24;
+}
+.data-list-table .data-list-filter:hover { color: #b7cce0; }
+.data-list-table .data-list-filter:focus-visible {
+    outline: 2px solid var(--ss-color-primary, #2f6b9a);
+    outline-offset: 1px;
+}
+
+/* Keep the generous drag target; only its visual line becomes a subtle hairline. */
+.data-list-resize-handle {
+    position: absolute;
+    z-index: 2;
+    inset: 0 -4px 0 auto;
+    width: 9px;
+    cursor: col-resize;
+    touch-action: none;
+}
+.data-list-resize-handle::after {
+    content: '';
+    position: absolute;
+    top: 28%;
+    bottom: 28%;
+    left: 4px;
+    width: 1px;
+    background: #b1c3dd22;
+    opacity: 0;
+    transition: opacity 120ms ease;
+}
+th:hover > .data-list-resize-handle::after,
+.data-list-resize-handle:hover::after,
+.data-list-resize-handle:focus-visible::after { opacity: 1; }
+.data-list-resize-handle:focus-visible {
+    outline: 1px solid var(--ss-color-primary, #2f6b9a);
+    outline-offset: -2px;
+}
+.data-list-resize-handle:focus-visible::after { background: #70b7e5; }
+
+.data-list-table .ant-table-pagination.ant-pagination {
+    margin-block: 0;
+    padding: 12px 16px;
+    font-size: var(--ui-font-compact, 12px);
+}
+.data-list-table .ant-pagination .ant-pagination-total-text {
+    color: var(--ss-color-text-secondary, #99a7c2);
+    font-size: var(--ui-font-compact, 12px);
+}
+.data-list-table .ant-pagination-item a { font-size: var(--ui-font-compact, 12px); font-weight: 400; }
+.data-list-table .ant-pagination .ant-select { font-size: var(--ui-font-compact, 12px); }
+.data-list-table .ant-pagination .ant-select-selector { border-color: #ffffff14; border-radius: 6px; }
+
+@media (max-width: 640px) {
+    .list-page .list-page-header .ant-typography { font-size: var(--ui-font-page, 22px); }
+    .list-page .list-page-actions { row-gap: 8px; }
+    .data-list-table .ant-table-pagination.ant-pagination { padding: 10px; row-gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .data-list-resize-handle::after { transition: none; }
+}
+
+/* Shared header controls adapted from LE's configurable list table. */
+.data-list-column-title { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.data-list-column-label { flex: 1; min-width: 0; }
+.data-list-filter-panel { display: grid; gap: 10px; width: 240px; max-width: calc(100vw - 64px); }
+.data-list-filter-panel small { font-size: var(--ui-font-caption, 11px); }
+.data-list-columns-panel { display: flex; flex-direction: column; gap: 10px; min-width: 180px; max-height: 60vh; overflow: auto; }
+.data-list-columns-panel .ant-checkbox-wrapper { margin: 0; font-size: var(--ui-font-list, 13px); }
+.data-list-columns-panel .ant-btn { margin-top: 6px; }
+.data-list-table .ant-table-tbody .ant-btn { height: 28px; padding-inline: 8px; font-size: var(--ui-font-list, 13px); }
+.data-list-table .ant-table-tbody .ant-space { flex-wrap: wrap; row-gap: 4px; }

@@ -1,0 +1,3 @@
+#!/bin/sh
+# Persistent state is kept in DSM package var; never erase pairing or queues.
+exit 0

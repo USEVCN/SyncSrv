@@ -1,0 +1,19 @@
+.auth-login-particle-brand {
+    --brand-particle-mix: 0;
+    position: relative;
+}
+.auth-login-particle-brand > .auth-login-brand-source {
+    opacity: calc(1 - var(--brand-particle-mix));
+}
+.auth-login-brand-particles {
+    position: absolute;
+    inset: -40px;
+    width: calc(100% + 80px);
+    height: calc(100% + 80px);
+    display: block;
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+    .auth-login-particle-brand > .auth-login-brand-source { opacity: 1; }
+    .auth-login-brand-particles { display: none; }
+}

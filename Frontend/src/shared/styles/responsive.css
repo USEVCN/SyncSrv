@@ -1,0 +1,92 @@
+@media (max-width: 1250px) {
+  .pipeline-arrow {
+    margin: 0 10px;
+  }
+  .pipeline-node {
+    padding: 14px;
+  }
+  .pipeline-node small {
+    font-size: var(--ui-font-caption, 11px);
+  }
+  .job-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .pipeline-node small {
+    white-space: normal;
+    line-height: 1.7;
+  }
+  .app-footer {
+    flex-direction: column;
+  }
+}
+@media (max-width: 680px) {
+  .pipeline {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pipeline-group,
+  .pipeline-group:last-child {
+    flex: 1 1 40%;
+  }
+  .pipeline-arrow {
+    display: none;
+  }
+  .pipeline-node {
+    height: 140px;
+  }
+  .flow-foot {
+    flex-wrap: wrap;
+  }
+  .flow-foot .ant-btn {
+    margin-left: 0;
+  }
+  .protocol-strip {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .protocol-strip small {
+    margin-left: 0;
+  }
+  .table-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 14px;
+  }
+  .table-toolbar > .ant-input-affix-wrapper {
+    max-width: none;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .restore-summary {
+    flex-wrap: wrap;
+  }
+  .audit-chain {
+    display: none;
+  }
+  .heading-actions .ant-space {
+    flex-wrap: wrap;
+  }
+  .job-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .audit-banner {
+    padding: 18px;
+  }
+  .metric-value {
+    font-size: var(--ui-font-display, 28px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

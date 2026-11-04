@@ -1,0 +1,161 @@
+/* LE 16-second edge motion; retain SyncSrv rim colors, gradient stops and glass. */
+html .ant-modal-root .ant-modal:not(.session-auth-modal) .ant-modal-container,
+html .ant-drawer .ant-drawer-section,
+html .routed-editor-page {
+    --ss-overlay-blue: var(--ss-color-primary, #2F6B9A);
+    --ss-overlay-line: var(--ss-line-width, .5px);
+    --ss-overlay-edge: color-mix(in srgb, var(--ss-overlay-blue) 34%, transparent);
+    --ss-overlay-divider: color-mix(in srgb, var(--ss-overlay-blue) 26%, transparent);
+    --ss-overlay-rim: linear-gradient(var(--ss-overlay-rim-angle, 140deg),
+        color-mix(in srgb, var(--ss-overlay-blue) 52%, transparent),
+        color-mix(in srgb, var(--ss-overlay-blue) 16%, transparent) 22%,
+        transparent 43%, transparent 76%,
+        color-mix(in srgb, var(--ss-overlay-blue) 32%, transparent));
+    --ss-overlay-glow: 0 0 8px color-mix(in srgb, var(--ss-overlay-blue) 2.5%, transparent);
+}
+
+/* Match the existing reset's specificity without replacing custom inline
+   semantic borders. Authentication retains its own branded frame. */
+html .ant-modal-root .ant-modal-wrap .ant-modal:not(.session-auth-modal) .ant-modal-container {
+    position: relative;
+    border-color: var(--ss-overlay-edge);
+    box-shadow: 0 24px 72px rgb(0 0 0 / 68%), var(--ss-overlay-glow);
+}
+html .ant-drawer .ant-drawer-section {
+    position: relative;
+    box-shadow: inset 0 0 0 var(--ss-overlay-line) var(--ss-overlay-edge), var(--ss-overlay-glow);
+}
+html .routed-editor-page {
+    position: relative;
+    border-color: var(--ss-overlay-edge);
+    box-shadow: 0 10px 28px rgb(0 5 13 / 10%), var(--ss-overlay-glow);
+}
+
+/* These reflections draw on the edge only and cannot capture input, cover the
+   close button, change focus rings or obstruct the resize handles. */
+html .ant-modal-root .ant-modal:not(.session-auth-modal) .ant-modal-container::after,
+html .ant-drawer .ant-drawer-section::after,
+html .routed-editor-page::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    padding: var(--ss-overlay-line);
+    border-radius: inherit;
+    background: var(--ss-overlay-rim);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+    animation: ss-overlay-edge-glint 16s linear infinite;
+}
+
+/* Divider rules deliberately avoid inputs, alerts, buttons and error states. */
+html .ant-modal:not(.session-auth-modal) .ant-modal-container > .ant-modal-header,
+html .ant-drawer .ant-drawer-section > .ant-drawer-header,
+html .routed-editor-page > .ant-card-head {
+    border-bottom-color: var(--ss-overlay-divider);
+    border-bottom-width: var(--ss-overlay-line);
+}
+html .ant-modal:not(.session-auth-modal) .ant-modal-container > .ant-modal-footer,
+html .ant-modal-confirm .ant-modal-confirm-btns,
+html .ant-drawer .ant-drawer-section > .ant-drawer-footer,
+html .routed-editor-page .routed-editor-footer {
+    border-top-color: var(--ss-overlay-divider);
+    border-top-width: var(--ss-overlay-line);
+}
+
+/* Routed system settings and native drawers share structural separators.
+   Ordinary inner panels use the same edge; status/validation controls do not. */
+html :is(.routed-editor-page, .ant-drawer-section) .ant-card {
+    border-color: var(--ss-overlay-edge);
+}
+html :is(.routed-editor-page, .ant-drawer-section) .ant-tabs-nav::before {
+    border-bottom-color: var(--ss-overlay-divider);
+    border-bottom-width: var(--ss-overlay-line);
+}
+html :is(.routed-editor-page, .ant-drawer-section) .ant-divider:not(.ant-divider-vertical) {
+    border-block-start-color: var(--ss-overlay-divider);
+    border-block-start-width: var(--ss-overlay-line);
+}
+html :is(.routed-editor-page, .ant-drawer-section) .ant-divider-with-text::before,
+html :is(.routed-editor-page, .ant-drawer-section) .ant-divider-with-text::after {
+    border-block-start-color: var(--ss-overlay-divider);
+    border-block-start-width: var(--ss-overlay-line);
+}
+
+@media print {
+    html .ant-modal-root .ant-modal:not(.session-auth-modal) .ant-modal-container::after,
+    html .ant-drawer .ant-drawer-section::after,
+    html .routed-editor-page::after { display: none; }
+}
+
+/* Browser selection visual zones; selection/query behavior and popup stacking
+   remain owned by browser-selector/1.1.0 and Ant Design. */
+html .le-browser-dialog .ant-modal-container {
+    padding: 0;
+    background: linear-gradient(155deg,
+        color-mix(in srgb, var(--ss-overlay-blue) 6%, transparent), transparent 44%,
+        color-mix(in srgb, var(--ss-overlay-blue) 3%, transparent)),
+        color-mix(in srgb, var(--ss-color-bg-container, #101729) 88%, transparent);
+}
+html .le-browser-dialog .ant-modal-header {
+    margin: 0;
+    padding: 14px 56px 14px 18px;
+    background: transparent;
+}
+html .le-browser-dialog .ant-modal-body { margin: 0; padding: 0; }
+html .le-browser-dialog .ant-modal-footer {
+    margin: 0;
+    padding: 10px 12px;
+    background: color-mix(in srgb, var(--ss-overlay-blue) 3%, transparent);
+    border-end-start-radius: inherit;
+    border-end-end-radius: inherit;
+}
+.le-browser-dialog .le-browser-selected:not(:empty) {
+    padding: 6px 8px;
+    border: var(--ss-overlay-line) solid var(--ss-overlay-divider);
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--ss-overlay-blue) 5%, transparent);
+}
+.le-browser-dialog .le-browser-selected .ant-tag {
+    border-color: var(--ss-overlay-edge);
+    background: color-mix(in srgb, var(--ss-overlay-blue) 14%, var(--ss-color-bg-container, #101729));
+}
+.le-browser-dialog .ant-table,
+.le-browser-dialog .ant-table-container { background: transparent; }
+.le-browser-dialog .ant-table-thead > tr > th {
+    background: color-mix(in srgb, var(--ss-overlay-blue) 10%, var(--ss-color-bg-container, #101729));
+}
+.le-browser-dialog .ant-table-tbody > tr > td { border-bottom-color: color-mix(in srgb, var(--ss-overlay-blue) 18%, transparent); }
+.le-browser-dialog .ant-table-tbody > tr > td.ant-table-cell-fix { background: var(--ss-color-bg-container, #101729); }
+.le-browser-dialog .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+    background: color-mix(in srgb, var(--ss-overlay-blue) 12%, var(--ss-color-bg-container, #101729));
+}
+.le-browser-dialog .ant-table-tbody > tr.ant-table-row-selected > td {
+    background: color-mix(in srgb, var(--ss-overlay-blue) 30%, var(--ss-color-bg-container, #101729));
+}
+.le-browser-dialog .ant-table-tbody > tr.ant-table-row-selected > td.ant-table-cell-row-hover {
+    background: color-mix(in srgb, var(--ss-overlay-blue) 36%, var(--ss-color-bg-container, #101729));
+}
+.le-browser-dialog .ant-table-tbody > tr.ant-table-row-selected > td:first-child { box-shadow: inset 2px 0 var(--ss-overlay-blue); }
+.le-browser-dialog .le-browser-card {
+    border-color: var(--ss-overlay-divider);
+    border-width: var(--ss-overlay-line);
+    background: color-mix(in srgb, var(--ss-overlay-blue) 3%, transparent);
+}
+.le-browser-dialog .le-browser-card:has(.ant-radio-checked, .ant-checkbox-checked) {
+    border-color: color-mix(in srgb, var(--ss-overlay-blue) 56%, transparent);
+    background: color-mix(in srgb, var(--ss-overlay-blue) 18%, var(--ss-color-bg-container, #101729));
+    box-shadow: inset 2px 0 var(--ss-overlay-blue);
+}
+
+@property --ss-overlay-rim-angle { syntax: '<angle>'; initial-value: 140deg; inherits: false; }
+@keyframes ss-overlay-edge-glint { from { --ss-overlay-rim-angle: 140deg; } to { --ss-overlay-rim-angle: 500deg; } }
+@media (prefers-reduced-motion: reduce), (forced-colors: active) {
+    html .ant-modal-root .ant-modal:not(.session-auth-modal) .ant-modal-container::after,
+    html .ant-drawer .ant-drawer-section::after,
+    html .routed-editor-page::after { animation: none; }
+}
