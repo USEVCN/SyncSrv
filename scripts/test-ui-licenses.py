@@ -15,12 +15,18 @@ class UiLicensesTest(unittest.TestCase):
   (self.folder/'LICENSE').write_text(MIT)
   (self.root/'licenses').mkdir()
   review={'schema':1,'reviewedAt':'2026-11-04','npmPackages':[{'name':'fixture','version':'1.0.0','license':'MIT','licenseSha256':hashlib.sha256(MIT.encode()).hexdigest()}],
-    'reactBits':{'files':u.BITS,'licenseUrl':'https://example.invalid/test-only','licenseSha256':hashlib.sha256((self.root/'Frontend/public/licenses/react-bits.txt').read_bytes()).hexdigest()}}
+    'reactBits':{'files':u.BITS,'licenseUrl':'https://example.invalid/test-only','licenseSha256':hashlib.sha256((self.root/'Frontend/public/licenses/react-bits.txt').read_text().encode()).hexdigest()}}
   (self.root/'licenses/ui-reviewed.json').write_text(json.dumps(review))
  def save(self):
   (self.folder/'package.json').write_text(json.dumps(self.package));(self.root/'Frontend/package-lock.json').write_text(json.dumps(self.lock))
  def test_full_text_and_application_exception_are_kept(self):
   inventory,notice=u.collect(self.root);self.assertIn(MIT,notice);self.assertEqual('MIT',inventory['npmPackages'][0]['license']);self.assertIn('React Bits Pro is not covered.',inventory['applicationComponents'][0]['conditions'])
+ def test_windows_line_endings_preserve_full_license_terms(self):
+  bits=self.root/'Frontend/public/licenses/react-bits.txt'
+  bits.write_bytes(bits.read_text().replace('\n','\r\n').encode())
+  (self.folder/'LICENSE').write_bytes(MIT.replace('\n','\r\n').encode())
+  inventory,notice=u.collect(self.root)
+  self.assertIn(MIT,notice);self.assertEqual('MIT',inventory['npmPackages'][0]['license'])
  def test_unknown_or_changed_license_is_not_auto_approved(self):
   self.package['license']='Commercial';self.save()
   with self.assertRaises(ValueError):u.collect(self.root)

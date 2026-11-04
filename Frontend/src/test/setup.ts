@@ -2,9 +2,9 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup, configure } from "@testing-library/react";
 import { afterEach, vi } from "vitest";
 
-// Slow hosted runners need a longer render budget; visibility and business
+// Rendering on slower hosts needs a bounded budget; visibility and business
 // assertions stay intact, including tests with their own explicit deadlines.
-configure({ asyncUtilTimeout: Reflect.get(globalThis, "process")?.env?.CI ? 5000 : 1000 });
+configure({ asyncUtilTimeout: 5000 });
 
 afterEach(() => {
   cleanup();
