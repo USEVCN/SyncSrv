@@ -1,4 +1,5 @@
 """Ensure business configuration code is bound without including private build keys."""
+import hashlib
 import tempfile
 import unittest
 from pathlib import Path
@@ -22,6 +23,15 @@ class FingerprintTest(unittest.TestCase):
         path = self.root / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(value)
+
+    def test_relative_names_and_order_are_portable(self):
+        self.write('Input/Z-file', 'one')
+        self.write('Input/a-file', 'two')
+        expected = hashlib.sha256()
+        for name, content in [('Input/Z-file', b'one'), ('Input/a-file', b'two')]:
+            expected.update(name.encode() + b'\0' + hashlib.sha256(content).digest())
+        paths = release_gate.inputs(['Input'], [])
+        self.assertEqual(expected.hexdigest(), release_gate.digest_inputs(paths))
 
     def test_business_config_is_bound(self):
         name = 'Backend/src/main/java/com/oadig/syncsrv/modules/config/ConfigurationService.java'

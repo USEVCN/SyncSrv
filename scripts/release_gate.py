@@ -20,11 +20,11 @@ def inputs(directories, files):
         path=ROOT/name
         if path.is_symlink():raise ValueError('Release input must not be a symlink: '+name)
         if path.is_file():paths.add(path)
-    return sorted(paths)
+    return sorted(paths,key=lambda p:p.relative_to(ROOT).as_posix())
 
 def digest_inputs(paths):
     digest=hashlib.sha256()
-    for path in paths:digest.update(str(path.relative_to(ROOT)).encode()+b'\0'+hashlib.sha256(path.read_bytes()).digest())
+    for path in paths:digest.update(path.relative_to(ROOT).as_posix().encode()+b'\0'+hashlib.sha256(path.read_bytes()).digest())
     return digest.hexdigest()
 
 def frontend_inputs():
