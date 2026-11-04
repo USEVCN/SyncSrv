@@ -14,6 +14,12 @@ const findVisibleRole = async (role: Parameters<typeof screen.findByRole>[0], op
   return element;
 };
 
+// This suite checks form values and submitted data, so use the real AntD
+// modal without the window-resize observers in the presentation wrapper.
+vi.mock("../shared/ResizableModal", async () => {
+ const { App, Modal } = await import("antd");
+ return {ResizableModal:Modal,useResizableApp:App.useApp};
+});
 vi.mock("../platform/http",()=>({api:vi.fn()}));
 it("saves per-task source concurrency without changing the task bandwidth",async()=>{
  vi.mocked(api).mockResolvedValue([]);

@@ -8,7 +8,7 @@ export default defineConfig({
     setupFiles: ["./src/test/setup.ts"],
     // Hosted runners spend substantially longer rendering the full Ant Design forms.
     // Rendering waits are bounded separately in the test setup.
-    testTimeout: process.env.CI ? 30000 : 5000,
+    testTimeout: process.env.CI ? (process.platform === "win32" ? 60000 : 30000) : 5000,
     hookTimeout: process.env.CI ? 30000 : 10000,
   },
 });
