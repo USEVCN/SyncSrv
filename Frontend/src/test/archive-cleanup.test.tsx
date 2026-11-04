@@ -211,6 +211,18 @@ describe("archive cleanup race protection",()=>{
 });
 
 describe("archive cleanup authoritative state",()=>{
+  it("does not re-enable a completed plan when a later poll returns stale ready history",async()=>{
+    const fetcher=vi.spyOn(globalThis,"fetch").mockImplementation(async input=>
+      response(String(input).endsWith("/archive/plans") ? [plan] : {...plan,state:"COMPLETED"}));
+    wrap(<ArchiveCleanupDrawer job={job} runs={[]} initialPlanId={plan.id} onClose={()=>{}} onQueued={async()=>{}} />);
+    expect(await findVisibleRole("button",{name:"整理已完成"})).toBeDisabled();
+    const before=fetcher.mock.calls.length;
+    await act(async()=>{fireEvent.click(visibleRole("button",{name:/刷\s*新/}));});
+    await waitFor(()=>expect(fetcher.mock.calls.length).toBeGreaterThan(before));
+    expect(visibleRole("button",{name:"整理已完成"})).toBeDisabled();
+    expect(screen.queryByRole("button",{name:"确认清理范围"})).not.toBeInTheDocument();
+    expect(executeCalls(fetcher)).toHaveLength(0);
+  });
   it("uses the server run status and blocks an unknown newer run instead of reusing an older failure",()=>{
     expect(archivePlanStatus({...plan,runId:"new-run",runStatus:"QUEUED"},[])).toMatchObject({label:"待执行",active:true});
     expect(archivePlanStatus({...plan,runId:"new-run"},[{...run,status:"FAILED"}])).toMatchObject({label:"执行状态待确认",active:true});

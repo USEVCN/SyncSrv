@@ -16,7 +16,7 @@ const discovery = (error = "", jobId = "job"): Discovery => ({ jobId, mode: "EVE
     updatedAt: "2026-09-18T00:00:00Z", merged: 3, error,
   }] });
 const response = (data: unknown) => new Response(JSON.stringify({ success: true, data }));
-const renderJob = () => render(<ConfigProvider><App><JobChanges job={job} /></App></ConfigProvider>);
+const renderJob = () => render(<ConfigProvider theme={{token:{motion:false}}}><App><JobChanges job={job} /></App></ConfigProvider>);
 
 it("does not promise automatic execution for a revoked source device",()=>{
   const waiting={...entry(),phase:"AUTHORIZATION_REQUIRED"};

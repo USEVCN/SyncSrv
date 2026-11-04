@@ -18,7 +18,7 @@ vi.mock("../platform/http",()=>({api:vi.fn()}));
 it("saves per-task source concurrency without changing the task bandwidth",async()=>{
  vi.mocked(api).mockResolvedValue([]);
  const saved=vi.fn(async()=>{});
- render(<ConfigProvider><App><JobForm value={{id:"j",adaptiveTransfers:false,name:"资料",sourceMode:"AGENT",discoveryMode:"EVENTS",agentId:"a",agentRoot:"E:/Source",targetId:"b",archiveId:"c",intervalSeconds:5,reconcileSeconds:86400,bandwidthMiB:20,enabled:true}} endpoints={[]} onClose={()=>{}} onSaved={saved}/></App></ConfigProvider>);
+ render(<ConfigProvider theme={{token:{motion:false}}}><App><JobForm value={{id:"j",adaptiveTransfers:false,name:"资料",sourceMode:"AGENT",discoveryMode:"EVENTS",agentId:"a",agentRoot:"E:/Source",targetId:"b",archiveId:"c",intervalSeconds:5,reconcileSeconds:86400,bandwidthMiB:20,enabled:true}} endpoints={[]} onClose={()=>{}} onSaved={saved}/></App></ConfigProvider>);
  const input=await findVisibleRole("spinbutton",{name:/并发文件数/},{timeout:4000});
  expect(input).toHaveValue("4");
  fireEvent.change(input,{target:{value:"8"}});
@@ -32,7 +32,7 @@ it("saves per-task source concurrency without changing the task bandwidth",async
 it("saves automatic concurrency with its own cap and preserves the manual setting",async()=>{
  vi.mocked(api).mockResolvedValue([]);
  const saved=vi.fn(async()=>{});
- render(<ConfigProvider><App><JobForm value={{id:"j",name:"资料",sourceMode:"AGENT",discoveryMode:"EVENTS",agentId:"a",agentRoot:"E:/Source",targetId:"b",archiveId:"c",intervalSeconds:5,reconcileSeconds:86400,bandwidthMiB:20,transferThreads:6,adaptiveTransfers:true,maxTransferThreads:16,enabled:true}} endpoints={[]} onClose={()=>{}} onSaved={saved}/></App></ConfigProvider>);
+ render(<ConfigProvider theme={{token:{motion:false}}}><App><JobForm value={{id:"j",name:"资料",sourceMode:"AGENT",discoveryMode:"EVENTS",agentId:"a",agentRoot:"E:/Source",targetId:"b",archiveId:"c",intervalSeconds:5,reconcileSeconds:86400,bandwidthMiB:20,transferThreads:6,adaptiveTransfers:true,maxTransferThreads:16,enabled:true}} endpoints={[]} onClose={()=>{}} onSaved={saved}/></App></ConfigProvider>);
  const input=await findVisibleRole("spinbutton",{name:"自动并发上限"});
  expect(input).toHaveValue("16");
  expect(screen.queryByRole("spinbutton",{name:/并发文件数/})).not.toBeInTheDocument();

@@ -17,7 +17,7 @@ describe("source device management", () => {
       }
       return new Response(JSON.stringify({success:true,data:{version:"0.14.0-dev",assets:[]}}));
     });
-    render(<ConfigProvider><App><AgentsPage/></App></ConfigProvider>);
+    render(<ConfigProvider theme={{token:{motion:false}}}><App><AgentsPage/></App></ConfigProvider>);
     fireEvent.click(screen.getByRole("button",{name:/reload 刷新/}));
     await screen.findByText("最新设备");
     await act(async()=>first(new Response(JSON.stringify({success:true,data:[]}))));
@@ -33,7 +33,7 @@ describe("source device management", () => {
       }
       return new Response(JSON.stringify({success:true,data:{version:"0.14.0-dev",assets:[]}}));
     });
-    render(<ConfigProvider><App><AgentsPage/></App></ConfigProvider>);
+    render(<ConfigProvider theme={{token:{motion:false}}}><App><AgentsPage/></App></ConfigProvider>);
     await screen.findByText("在线");
     fireEvent.click(screen.getByRole("button",{name:/reload 刷新/}));
     await screen.findByText("连接状态待确认");
@@ -79,7 +79,7 @@ describe("source device management", () => {
         );
       });
     render(
-      <ConfigProvider>
+      <ConfigProvider theme={{token:{motion:false}}}>
         <App>
           <AgentsPage />
         </App>
@@ -105,7 +105,7 @@ describe("source device management", () => {
       new Error("中心暂时不可达"),
     );
     render(
-      <ConfigProvider>
+      <ConfigProvider theme={{token:{motion:false}}}>
         <App>
           <AgentsPage />
         </App>

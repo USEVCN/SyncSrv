@@ -63,7 +63,13 @@ function ArchiveCleanupContent({job,runs,initialPlanId,onClose,onQueued}:Props) 
         const summary=next.find(p=>p.id===selected.id);
         const updated=summary && !summary.detailsOmitted ? summary
           : await api<ArchivePlan>(`/jobs/${job.id}/archive/plans/${selected.id}`);
-        if(current() && selectionRevision===version.current)setPlan(previous=>previous?.id===selected.id ? updated : previous);
+        if(current() && selectionRevision===version.current)setPlan(previous=>{
+          if(previous?.id!==selected.id)return previous;
+          // Completion is irreversible for this plan ID. A late summary must not
+          // re-enable destructive actions after the detail endpoint confirmed it.
+          if(previous.state==="COMPLETED" && updated.state!=="COMPLETED")return previous;
+          return updated;
+        });
       }
     } catch(e) {if(current())setHistoryError((e as Error).message);}
   },[job.id]);

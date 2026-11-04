@@ -9,7 +9,7 @@ const asset = (platform: string, arch: string) => ({ platform, arch,
 const release = {version:"0.8.0-dev",assets:[asset("windows","amd64"),asset("windows","arm64"),asset("darwin","arm64")]};
 function setup(value: unknown = release) {
   vi.spyOn(globalThis,"fetch").mockResolvedValue(new Response(JSON.stringify({success:true,data:value})));
-  render(<ConfigProvider><App><AgentInstall /></App></ConfigProvider>);
+  render(<ConfigProvider theme={{token:{motion:false}}}><App><AgentInstall /></App></ConfigProvider>);
 }
 describe("agent package setup", () => {
   it("downloads the published package without putting pairing secrets in a URL or shell command", async () => {
@@ -38,7 +38,7 @@ describe("agent package setup", () => {
   });
   it("creates agent tasks using only B and C connections", async () => {
     vi.spyOn(globalThis,"fetch").mockResolvedValue(new Response(JSON.stringify({success:true,data:[]})));
-    render(<ConfigProvider><App><JobForm value={{}} endpoints={[]} onClose={()=>{}} onSaved={async()=>{}} /></App></ConfigProvider>);
+    render(<ConfigProvider theme={{token:{motion:false}}}><App><JobForm value={{}} endpoints={[]} onClose={()=>{}} onSaved={async()=>{}} /></App></ConfigProvider>);
     expect(await screen.findByText("源目录直传备份库")).toBeInTheDocument();
     expect(screen.queryByText("源目录")).not.toBeInTheDocument();
     fireEvent.mouseEnter(screen.getByRole("button", {name:"存储连接准备"}));
