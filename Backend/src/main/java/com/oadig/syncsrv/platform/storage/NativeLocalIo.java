@@ -16,7 +16,14 @@ final class NativeLocalIo implements AutoCloseable {
   private final Process process;
   private final InputStream input;
   private final OutputStream output;
-  private volatile boolean closed;
+  private volatile boolean closed, busy;
+  private static final java.util.concurrent.ScheduledThreadPoolExecutor SHUTDOWN = shutdownTimer();
+  private static java.util.concurrent.ScheduledThreadPoolExecutor shutdownTimer() {
+    var timer = new java.util.concurrent.ScheduledThreadPoolExecutor(1, action -> {
+      var thread = new Thread(action, "syncsrv-local-io-shutdown"); thread.setDaemon(true); return thread;
+    });
+    timer.setRemoveOnCancelPolicy(true); return timer;
+  }
   private final java.util.concurrent.atomic.AtomicBoolean closing = new java.util.concurrent.atomic.AtomicBoolean();
   private final java.util.concurrent.CountDownLatch stopped = new java.util.concurrent.CountDownLatch(1);
   record Reply(JsonNode json, byte[] body) {}
@@ -55,7 +62,13 @@ final class NativeLocalIo implements AutoCloseable {
   }
   synchronized Reply call(Map<String, ?> request) throws Exception { return call(request, new byte[0]); }
   synchronized Reply call(Map<String, ?> request, byte[] body) throws Exception {
-    if (closed) throw new IOException("本地存储连接已关闭");
+    busy = true;
+    try {
+      if (closed) throw new IOException("本地存储连接已关闭");
+      return exchange(request, body, true);
+    } finally { busy = false; }
+  }
+  private Reply exchange(Map<String, ?> request, byte[] body, boolean invalidate) throws Exception {
     JsonNode json; byte[] data;
     try {
       output.write(Json.MAPPER.writeValueAsBytes(request)); output.write('\n'); output.write(body); output.flush();
@@ -67,7 +80,7 @@ final class NativeLocalIo implements AutoCloseable {
       json = Json.MAPPER.readTree(header.toByteArray()); int length = json.path("length").asInt(-1);
       if (length < 0 || length > CHUNK) throw new IOException("本地存储响应长度无效");
       data = input.readNBytes(length); if (data.length != length) throw new EOFException("本地存储响应不完整");
-    } catch (Exception e) { close(); throw e; }
+    } catch (Exception e) { if (invalidate) close(); throw e; }
     if (!json.path("ok").asBoolean()) {
       String path = Objects.toString(request.get("path"), "");
       switch (json.path("error").asText()) {
@@ -80,10 +93,26 @@ final class NativeLocalIo implements AutoCloseable {
     return new Reply(json, data);
   }
   @Override public void close() {
-    boolean owner = closing.compareAndSet(false, true), interrupted = false;
+    boolean owner = closing.compareAndSet(false, true), interrupted = Thread.interrupted();
     long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
+    java.util.concurrent.ScheduledFuture<?> timeout = null;
+    Exception shutdownFailure = null;
     try {
-      if (owner) { closed = true; process.destroyForcibly(); }
+      if (owner) {
+        closed = true;
+        // Stop admitting requests, then let a short in-flight local operation
+        // finish so cancellation can release native handles explicitly as well.
+        long quiet = System.nanoTime() + TimeUnit.MILLISECONDS.toNanos(100);
+        while (busy && System.nanoTime() < quiet) {
+          java.util.concurrent.locks.LockSupport.parkNanos(TimeUnit.MILLISECONDS.toNanos(1));
+          if (Thread.interrupted()) interrupted = true;
+        }
+        if (!busy) {
+          timeout = SHUTDOWN.schedule(() -> process.destroyForcibly(), 2, TimeUnit.SECONDS);
+          try { exchange(Map.of("op", "shutdown"), new byte[0], false); }
+          catch (Exception e) { shutdownFailure = e; process.destroyForcibly(); }
+        } else process.destroyForcibly();
+      }
       for (;;) {
         long left = deadline - System.nanoTime();
         if (left <= 0) throw new IllegalStateException("本地存储组件未能及时退出");
@@ -92,6 +121,7 @@ final class NativeLocalIo implements AutoCloseable {
         } catch (InterruptedException e) { interrupted = true; }
       }
     } finally {
+      if (timeout != null) timeout.cancel(false);
       if (owner) {
         try { output.close(); } catch (Exception ignored) {}
         try { input.close(); } catch (Exception ignored) {}
@@ -99,5 +129,6 @@ final class NativeLocalIo implements AutoCloseable {
       }
       if (interrupted) Thread.currentThread().interrupt();
     }
+    if (shutdownFailure != null) throw new IllegalStateException("本地存储退出确认失败", shutdownFailure);
   }
 }

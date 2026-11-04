@@ -66,6 +66,21 @@ class StorageLifecycleTest {
     assertEquals("contents",Files.readString(root.resolve("backup/folder/file")));
     assertEquals(1,engine.snapshots().size());
   }
+  @Test void concurrentReaderStopsAndReleasesItsRootBeforeCloseReturns() throws Exception {
+    Path folder=Files.createDirectory(root.resolve("reader"));Files.write(folder.resolve("file"),new byte[1024*1024]);
+    var storage=new LocalStorage(folder);var started=new java.util.concurrent.CountDownLatch(1);
+    var pool=java.util.concurrent.Executors.newSingleThreadExecutor();
+    try {
+      var reader=pool.submit(()->{
+        try(var input=storage.read("file",0)) { while(input.read()!=-1)started.countDown(); }
+        catch(java.io.IOException expected) { /* Closing the owner cancels active reads. */ }
+        catch(Exception error) { throw new RuntimeException(error); }
+      });
+      assertTrue(started.await(5,java.util.concurrent.TimeUnit.SECONDS));
+      storage.close();reader.get(5,java.util.concurrent.TimeUnit.SECONDS);
+      Files.delete(folder.resolve("file"));Files.delete(folder);
+    } finally {storage.close();pool.shutdownNow();}
+  }
   private Set<Long> helpers() {
     var result=new HashSet<Long>();
     ProcessHandle.current().descendants().filter(p->p.info().command().orElse("").contains("syncsrv-local-io-"))

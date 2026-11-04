@@ -9,6 +9,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"runtime"
 	"testing"
 )
 
@@ -89,7 +90,11 @@ func TestToolInstallPreservesIdentityAndQueue(t *testing.T) {
 			t.Fatal("data changed")
 		}
 	}
-	for _, name := range []string{"update.sh", "start.sh", "stop.sh", "restart.sh", "uninstall.sh", "agent-uninstall.sh", "agent-control.sh", "agent-control.conf"} {
+	names := []string{"update.sh", "start.sh", "stop.sh", "restart.sh", "uninstall.sh", "agent-uninstall.sh", "agent-control.sh", "agent-control.conf"}
+	if runtime.GOOS == "windows" {
+		names = []string{"update.bat", "start.bat", "stop.bat", "restart.bat", "uninstall.bat", "agent-uninstall.ps1", "agent-control.ps1", "agent-control.conf"}
+	}
+	for _, name := range names {
 		if _, err := os.Stat(filepath.Join(install, name)); err != nil {
 			t.Fatal(err)
 		}

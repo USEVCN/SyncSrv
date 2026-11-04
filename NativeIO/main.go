@@ -111,6 +111,9 @@ func (b *bridge) serve(input io.Reader, output io.Writer) error {
 		if err = out.Flush(); err != nil {
 			return err
 		}
+		if q.Op == "shutdown" {
+			return nil
+		}
 	}
 }
 func errorCode(err error) string {
@@ -174,6 +177,19 @@ func (b *bridge) add(f *os.File, w bool) (response, []byte, error) {
 }
 func (b *bridge) execute(q request, body []byte) (response, []byte, error) {
 	var r response
+	if q.Op == "shutdown" {
+		var failed error
+		for id, h := range b.handles {
+			if e := h.file.Close(); failed == nil {
+				failed = e
+			}
+			delete(b.handles, id)
+		}
+		if e := b.root.Close(); failed == nil {
+			failed = e
+		}
+		return r, nil, failed
+	}
 	if q.Op == "ping" {
 		return r, nil, nil
 	}

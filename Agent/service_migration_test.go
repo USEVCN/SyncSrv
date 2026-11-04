@@ -19,7 +19,7 @@ func TestSystemdMigrationPreservesStateAndRollsBack(t *testing.T) {
 			dir := t.TempDir()
 			old := filepath.Join(dir, legacySystemdService)
 			fresh := filepath.Join(dir, systemdService)
-			unit := "[Service]\nExecStart=\"/opt/agent/syncsrv-agent\" run --data-dir \"/var/lib/agent\"\n"
+			unit := fmt.Sprintf("[Service]\nExecStart=\"%s\" run --data-dir \"/var/lib/agent\"\n", filepath.Join("/opt/agent", "syncsrv-agent"))
 			if err := os.WriteFile(old, []byte(unit), 0644); err != nil {
 				t.Fatal(err)
 			}

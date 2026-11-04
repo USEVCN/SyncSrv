@@ -159,3 +159,27 @@ func TestDirectoryMetadataUsesLogicalBytes(t *testing.T) {
 		t.Fatal(r, e)
 	}
 }
+
+func TestShutdownAcknowledgesOnlyAfterReleasingRootAndFiles(t *testing.T) {
+	b, dir := fixture(t)
+	if _, _, e := b.execute(request{Op: "write-open", Path: "file"}, nil); e != nil {
+		t.Fatal(e)
+	}
+	var out bytes.Buffer
+	if e := b.serve(bytes.NewBufferString("{\"op\":\"shutdown\"}\n{\"op\":\"ping\"}\n"), &out); e != nil {
+		t.Fatal(e)
+	}
+	if bytes.Count(out.Bytes(), []byte("\n")) != 1 || len(b.handles) != 0 {
+		t.Fatal("shutdown was not terminal", out.String())
+	}
+	if _, e := b.root.Stat("."); e == nil {
+		t.Fatal("root retained after shutdown acknowledgement")
+	}
+	if e := os.Remove(filepath.Join(dir, "file")); e != nil {
+		t.Fatal(e)
+	}
+	if e := os.Rename(dir, dir+"-moved"); e != nil {
+		t.Fatal(e)
+	}
+	t.Cleanup(func() { os.Remove(dir + "-moved") })
+}
