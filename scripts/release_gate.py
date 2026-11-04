@@ -13,7 +13,7 @@ def inputs(directories, files):
         if not base.exists():continue
         for path in base.rglob('*'):
             relative=path.relative_to(ROOT)
-            if any(part in EXCLUDE for part in relative.parts) or str(relative)==IDENTITY or path.name.endswith(('.log','.pyc')):continue
+            if any(part in EXCLUDE for part in relative.parts) or relative.as_posix()==IDENTITY or path.name.endswith(('.log','.pyc')):continue
             if path.is_symlink():raise ValueError('Release input must not be a symlink: '+str(relative))
             if path.is_file():paths.add(path)
     for name in files:
