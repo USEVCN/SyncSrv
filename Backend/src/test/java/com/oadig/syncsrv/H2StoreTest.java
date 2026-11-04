@@ -49,6 +49,7 @@ class H2StoreTest {
       while(!Files.exists(marker)&&p.isAlive()&&System.nanoTime()<end)Thread.sleep(25);
       assertTrue(Files.exists(marker),()->{try{return Files.readString(log);}catch(Exception e){return e.toString();}});
       p.destroyForcibly();assertTrue(p.waitFor(10,TimeUnit.SECONDS));
+      awaitWriterLockRelease(data.resolve("instance.lock"));
       try(Store s=open(data)){
         assertEquals(1,s.verify().sequence());assertNotNull(s.get("sample","committed",Map.class));assertNull(s.get("sample","pending",Map.class));
         s.commit("test","recovered","fixture",Map.of());assertEquals(2,s.verify().sequence());
@@ -69,6 +70,17 @@ class H2StoreTest {
     }
     assertThrows(Exception.class,()->MetadataTools.backup(data,root.resolve("invalid.zip")));
     assertFalse(Files.exists(root.resolve("invalid.zip")));
+  }
+  private void awaitWriterLockRelease(Path file) throws Exception {
+    long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(10);
+    do {
+      try(var channel=java.nio.channels.FileChannel.open(file,StandardOpenOption.WRITE)) {
+        var released=channel.tryLock();
+        if(released!=null){released.release();return;}
+      }
+      Thread.sleep(25);
+    }while(System.nanoTime()<deadline);
+    fail("OS did not release the terminated writer's file lock");
   }
   public static class CrashWriter{
     public static void main(String[]args)throws Exception{

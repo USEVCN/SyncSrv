@@ -275,6 +275,9 @@ class TransferTest {
       return delegate.capabilities();
     }
 
-    public void close() {}
+    public void close() {
+      try { delegate.close(); }
+      catch (Exception error) { throw new RuntimeException(error); }
+    }
   }
 }

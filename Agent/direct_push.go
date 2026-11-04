@@ -16,6 +16,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"time"
 )
 
@@ -190,13 +191,16 @@ func (c *Client) writeDirectFile(ctx context.Context, target *remoteTarget, root
 	if err != nil {
 		return err
 	}
-	if after.Size() != n.Size || after.ModTime().UnixMilli() != n.Modified {
+	if !sameSourceVersion(info, after) || after.Size() != n.Size {
 		return fmt.Errorf("source changed during direct upload: %s", n.Path)
 	}
-	// Read-back verification only needs B. Release A before that potentially
-	// long operation so a pending source deletion can finish immediately.
-	if err = f.Close(); err != nil {
-		return err
+	// Windows must release the file before readback so a deleted parent can
+	// be recreated. Unix can retain the inode without blocking unlink; this
+	// prevents immediate inode reuse even on filesystems with coarse timestamps.
+	if runtime.GOOS == "windows" {
+		if err = f.Close(); err != nil {
+			return err
+		}
 	}
 	actual, err := target.stat(ticket.Path)
 	if err != nil {
@@ -228,7 +232,7 @@ func (c *Client) writeDirectFile(ctx context.Context, target *remoteTarget, root
 	if err != nil {
 		return sourceFailure(n.Path, err)
 	}
-	if !os.SameFile(info, after) || after.Size() != n.Size || after.ModTime().UnixMilli() != n.Modified {
+	if !sameSourceVersion(info, after) || after.Size() != n.Size {
 		return fmt.Errorf("source changed during direct upload: %s", n.Path)
 	}
 	return nil

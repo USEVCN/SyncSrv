@@ -103,6 +103,10 @@ func TestDirectReadbackReleasesSourceAndRejectsDeletedOrReplacedFile(t *testing.
 			if err := os.WriteFile(path, []byte("original"), 0600); err != nil {
 				t.Fatal(err)
 			}
+			originalInfo, err := os.Stat(path)
+			if err != nil {
+				t.Fatal(err)
+			}
 			_, nodes, err := collectSource(context.Background(), source, nil, true)
 			if err != nil {
 				t.Fatal(err)
@@ -130,6 +134,10 @@ func TestDirectReadbackReleasesSourceAndRejectsDeletedOrReplacedFile(t *testing.
 				}
 				if replacement {
 					if err := os.WriteFile(path, []byte("replaced"), 0600); err != nil {
+						t.Fatal(err)
+					}
+					// Even an exact preserved mtime must not hide a reused inode.
+					if err := os.Chtimes(path, originalInfo.ModTime(), originalInfo.ModTime()); err != nil {
 						t.Fatal(err)
 					}
 				}
